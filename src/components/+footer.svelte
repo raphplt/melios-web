@@ -1,31 +1,32 @@
 <script>
 	import MeliosLogo from '$lib/icons/melios.png';
-	import { text } from '@sveltejs/kit';
-	const styleH2 = 'text-2xl font-spectral text-center text-white mb-3';
+	const styleH2 = 'text-lg sm:text-2xl font-spectral text-left sm:text-center text-white mb-3';
 </script>
 
-<footer class="flex flex-row justify-evenly items-center bg-gray-700">
+<footer
+	class="flex flex-col sm:flex-row justify-evenly items-start sm:items-center bg-gray-800 pt-20"
+>
 	<div class="flex flex-col items-start justify-start p-20 gap-5">
 		<img src={MeliosLogo} alt="Melios Logo" class="w-20 h-20" />
 		<span class="font-semibold text-white">
 			Melios: Transforming Progress, One Habit at a Time!
 		</span>
 	</div>
-	<div class="flex flex-row gap-20">
+	<div class="flex flex-col sm:flex-row gap-10 pl-12 sm:pl-0 sm:gap-20">
 		<div>
 			<h2 class={styleH2}>Company</h2>
 			<ul class="flex flex-col justify-evenly gap-4 items-start text-white">
 				<li class="hover:text-gray-300">
-					<a href="/about"> About Us </a>
+					<a href="/coming-soon">About Us</a>
 				</li>
 				<li class="hover:text-gray-300">
-					<a href="/careers"> Careers </a>
+					<a href="/coming-soon"> Careers </a>
 				</li>
 				<li class="hover:text-gray-300">
-					<a href="/contact"> Contact Us </a>
+					<a href="/coming-soon"> Contact Us </a>
 				</li>
 				<li class="hover:text-gray-300">
-					<a href="/contact"> Community </a>
+					<a href="/coming-soon"> Community </a>
 				</li>
 			</ul>
 		</div>
@@ -59,27 +60,28 @@
 				</li>
 			</ul>
 		</div>
-        <div>
-            <h2 class={styleH2}>Ressources</h2>
-            <ul class="flex flex-col justify-evenly gap-4 items-start text-white">
-                <li class="hover:text-gray-300">
-                    <a href="/faq">FAQ</a>
-                </li>
-                <li class="hover:text-gray-300">
-                    <a href="/terms">Terms of Service</a>
-                </li>
-                <li class="hover:text-gray-300">
-                    <a href="/privacy">Privacy Policy</a>
-                </li>
-                <li class="hover:text
-                -gray-300">
-                    <a href="/cookie">Cookie Policy</a>
-                </li>
-                <li class="hover:text-gray-300">
-                    <a href="/sitemap">Sitemap</a>
-                </li>
-            </ul>
-
-        </div>
+		<div>
+			<h2 class={styleH2}>Ressources</h2>
+			<ul class="flex flex-col justify-evenly gap-4 items-start text-white">
+				<li class="hover:text-gray-300">
+					<a href="/faq">FAQ</a>
+				</li>
+				<li class="hover:text-gray-300">
+					<a href="/terms">Terms of Service</a>
+				</li>
+				<li class="hover:text-gray-300">
+					<a href="/privacy">Privacy Policy</a>
+				</li>
+				<li
+					class="hover:text
+                -gray-300"
+				>
+					<a href="/cookie">Cookie Policy</a>
+				</li>
+				<li class="hover:text-gray-300">
+					<a href="/sitemap">Sitemap</a>
+				</li>
+			</ul>
+		</div>
 	</div>
 </footer>

@@ -5,6 +5,10 @@ export default {
 		extend: {
 			fontFamily: {
 				spectral: ['Spectral SC', 'serif']
+			},
+			backdropBlur: {
+				none: '0',
+				blur: 'blur(20px)'
 			}
 		}
 	},

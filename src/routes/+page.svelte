@@ -12,7 +12,7 @@
 	import Background from '../components/+background.svelte';
 	import Footer from '../components/+footer.svelte';
 
-	const styleH2 = 'text-4xl font-spectral text-center';
+	const styleH2 = 'sm:text-4xl text-2xl font-spectral text-center';
 
 	let faqElement = [
 		{
@@ -48,10 +48,10 @@
 		<img src={background} alt="background" class="w-[100vw] h-[100vh] absolute top-0" />
 		<div class="flex flex-col gap-20 lg:gap-64">
 			<div class="relative flex flex-col gap-5 justify-center items-center mt-48">
-				<h1 class="text-5xl text-center font-spectral w-1/2 mx-auto white">
+				<h1 class="text-2xl sm:text-5xl text-center font-spectral w-10/12 sm:w-1/2 mx-auto white">
 					Embrace Change, Earn Rewards! Our app turns your habits into triumphs!
 				</h1>
-				<h2 class=" text-center text-xl w-1/3 text-gray-700 mb-5">
+				<h2 class="text-center sm:text-xl w-10/12 sm:w-1/3 text-gray-700 mb-5">
 					Unlock your potential, cultivate wellness, and thrive with our personalized approach to
 					self-improvement and habit-building.
 				</h2>
@@ -59,24 +59,27 @@
 					<Button text="Get Started" />
 				</a>
 			</div>
-			<div class="relative flex items-center justify-center gap-10">
-				<a
-					href="https://www.apple.com/fr/app-store/"
-					class="w-40 hover:scale-105 transform transition duration-200 ease-in-out"
-				>
-					<AppStore />
-				</a>
-				<a
-					href="https://play.google.com/store/apps?hl=fr&gl=US&pli=1"
-					class="w-40 hover:scale-105 transform transition duration-200 ease-in-out"
-				>
-					<GooglePlayStore />
-				</a>
+			<div class="relative">
+				<p class="text-center text-lg mb-8 font-semibold">Soon available on:</p>
+				<div class="flex items-center justify-center gap-10">
+					<a
+						href="https://www.apple.com/fr/app-store/"
+						class="sm:w-40 w-24 hover:scale-105 transform transition duration-200 ease-in-out"
+					>
+						<AppStore />
+					</a>
+					<a
+						href="https://play.google.com/store/apps?hl=fr&gl=US&pli=1"
+						class="sm:w-44 w-28 hover:scale-105 transform transition duration-200 ease-in-out"
+					>
+						<GooglePlayStore />
+					</a>
+				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="py-24 flex flex-col gap-36 relative" id="phone-section">
+	<section class="sm:py-24 py-12 flex flex-col gap-24 sm:gap-36 relative" id="phone-section">
 		<Background />
 
 		<h2 class={styleH2}>Ready to reclaim your life?</h2>
@@ -105,14 +108,14 @@
 			buttonColor="#033CB1"
 		/>
 	</section>
-	<section class="py-24">
+	<section class="py-12 sm:py-24" id="faq-section">
 		<h2 class={styleH2}>FAQ</h2>
 
 		<div class="flex flex-col items-center gap-5 mt-12">
 			{#each faqElement as faq (faq.question)}
-				<div class="flex flex-col gap-3 w-1/3 py-3">
+				<div class="flex flex-col gap-3 w-11/12 sm:w-1/3 py-3">
 					<button
-						class="text-2xl font-spectral cursor-pointer text-left"
+						class="sm:text-2xl text-xl font-spectral cursor-pointer text-left"
 						on:click={() => (faq.showAnswer = !faq.showAnswer)}
 					>
 						{faq.question}

@@ -1,7 +1,5 @@
 <svg
 	id="svg51"
-	width="180"
-	height="53.333"
 	version="1.1"
 	viewBox="0 0 180 53.333"
 	xml:space="preserve"
