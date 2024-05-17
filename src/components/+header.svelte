@@ -70,6 +70,9 @@
 			}
 		}, 0);
 	}
+
+	const styleLink = 'hover:italic hover:font-semibold transition duration-300';
+
 </script>
 
 <header
@@ -80,7 +83,7 @@
 	<div class="flex justify-between w-11/12 mx-auto sm:w-fit sm:mx-0">
 		<a
 			href="/"
-			class="hover:underline hover:font-semibold underline-offset-2 flex items-center flex-col gap-1"
+			class="hover:font-semibold underline-offset-2 flex items-center flex-col gap-1"
 		>
 			<a
 				href="/"
@@ -88,7 +91,9 @@
 				on:click={closeMenu}
 			>
 				<img src={MeliosLogo} alt="home" />
+				<p class={styleLink}>
 				Melios
+				</p>
 			</a>
 		</a>
 		<button
@@ -117,17 +122,17 @@
 			class="flex gap-20 text-xl sm:text-[16px] sm:gap-20 sm:flex-row flex-col h-[100vh] sm:h-fit w-[100wv] items-center sm:items-start"
 		>
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/" class="font-semibold" on:click={closeMenu}>Home</a>
+				<a href="/" class={styleLink} on:click={closeMenu}>Home</a>
 			</li>
 			<li aria-current={$page.url.pathname === '#about' ? 'page' : undefined}>
 				<button
 					on:click|preventDefault={navigateToPhoneSection}
-					class="font-semibold"
+					class={styleLink}
 					on:click={closeMenu}>About</button
 				>
 			</li>
 			<li aria-current={$page.url.pathname.startsWith('/faq') ? 'page' : undefined}>
-				<button class="font-semibold" on:click|preventDefault={navigateToFAQ}>FAQ</button>
+				<button class={styleLink} on:click|preventDefault={navigateToFAQ}>FAQ</button>
 			</li>
 		</ul>
 	{/if}

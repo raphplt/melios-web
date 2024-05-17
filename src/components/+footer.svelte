@@ -49,13 +49,13 @@
 					</a>
 				</li>
 				<li class="hover:text-gray-300">
-					<a href="https://www.instagram.com/melios" target="_blank" rel="noopener noreferrer">
+					<a href="https://www.instagram.com/melios_app" target="_blank" rel="noopener noreferrer">
 						Instagram
 					</a>
 				</li>
 				<li class="hover:text-gray-300">
-					<a href="https://www.twitter.com/melios" target="_blank" rel="noopener noreferrer">
-						Twitter
+					<a href="mailto:melios.customer@gmail.com" target="_blank" rel="noopener noreferrer">
+						Email
 					</a>
 				</li>
 			</ul>

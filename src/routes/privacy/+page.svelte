@@ -10,7 +10,7 @@
 		<h1 class="text-2xl mb-4 mt-6">Privacy Policy for Melios</h1>
 
 		<p>
-			At Melios, accessible from https://melios.fr, one of our main priorities is the privacy of our
+			At Melios, accessible from https://melios.me, one of our main priorities is the privacy of our
 			visitors. This Privacy Policy document contains types of information that is collected and
 			recorded by Melios and how we use it.
 		</p>
