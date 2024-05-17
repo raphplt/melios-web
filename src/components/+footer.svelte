@@ -4,7 +4,7 @@
 </script>
 
 <footer
-	class="flex flex-col sm:flex-row justify-evenly items-start sm:items-center bg-gray-800 pt-20"
+	class="flex flex-col sm:flex-row justify-evenly items-start sm:items-center bg-gray-800 pt-20 pb-4"
 >
 	<div class="flex flex-col items-start justify-start p-20 gap-5">
 		<img src={MeliosLogo} alt="Melios Logo" class="w-20 h-20" />
