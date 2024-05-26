@@ -6,117 +6,106 @@
 <div>
 	<Header />
 	<div class="max-w-3xl mx-auto bg-white p-4 rounded-lg shadow-md mt-24 mb-24">
-		<h1 class="text-2xl mb-4 mt-6">Politique relative aux cookies</h1>
-		<p>Dernière mise à jour : 3 Mars 2024</p>
+		<h1 class="text-2xl mb-4 mt-6">Cookie Policy</h1>
+		<p>Last updated: March 3, 2024</p>
 		<p>
-			Cette Politique relative aux cookies explique ce que sont les cookies et comment nous les
-			utilisons. Vous devriez lire cette politique afin de comprendre quel type de cookies nous
-			utilisons, les informations que nous collectons à l&apos;aide de ces cookies et comment ces
-			informations sont utilisées.
+			This Cookie Policy explains what cookies are and how we use them. You should read this policy
+			to understand the types of cookies we use, the information we collect using cookies, and how
+			that information is used.
 		</p>
 		<p>
-			Les cookies ne contiennent généralement aucune information permettant d&apos;identifier
-			personnellement un utilisateur, mais des informations personnelles que nous stockons à votre
-			sujet peuvent être liées aux informations stockées et obtenues à partir des cookies. Pour plus
-			d&apos;informations sur la manière dont nous utilisons, stockons et sécurisons vos données
-			personnelles, consultez notre Politique de confidentialité.
+			Cookies generally do not contain any information that personally identifies a user, but
+			personal information that we store about you may be linked to the information stored in and
+			obtained from cookies. For more information on how we use, store, and keep your personal data
+			secure, see our Privacy Policy.
 		</p>
 		<p>
-			Nous ne stockons pas d&apos;informations personnelles sensibles, telles que des adresses
-			postales, des mots de passe de compte, etc., dans les cookies que nous utilisons.
+			We do not store sensitive personal information, such as mailing addresses, account passwords,
+			etc., in the cookies we use.
 		</p>
-		<h1 class="text-xl mb-4 mt-6">Interprétation et Définitions</h1>
-		<h2>Interprétation</h2>
+		<h1 class="text-xl mb-4 mt-6">Interpretation and Definitions</h1>
+		<h2>Interpretation</h2>
 		<p>
-			Les mots dont la première lettre est en majuscule ont des significations définies dans les
-			conditions suivantes. Les définitions suivantes auront la même signification, qu&apos;elles
-			apparaissent au singulier ou au pluriel.
+			Words with the initial letter capitalized have defined meanings under the following
+			conditions. The following definitions shall have the same meaning regardless of whether they
+			appear in singular or in plural.
 		</p>
-		<h2>Définitions</h2>
-		<p>Pour les besoins de cette Politique relative aux cookies :</p>
+		<h2>Definitions</h2>
+		<p>For the purposes of this Cookie Policy:</p>
 		<ul>
 			<li>
-				<strong>Entreprise</strong> (dénommée soit « l&apos;Entreprise, « Nous », «Notre» ou «Nos» dans
-				cette Politique relative aux cookies) fait référence à Melios.
+				<strong>Company</strong> (referred to as either "the Company", "We", "Us" or "Our" in this Cookie
+				Policy) refers to Melios.
 			</li>
 			<li>
-				<strong>Cookies</strong> désigne de petits fichiers placés sur votre ordinateur, votre appareil
-				mobile ou tout autre appareil par un site web, contenant des détails sur votre historique de
-				navigation sur ce site parmi ses nombreuses utilisations.
+				<strong>Cookies</strong> are small files that are placed on your computer, mobile device, or
+				any other device by a website, containing details of your browsing history on that website among
+				its many uses.
 			</li>
 			<li>
-				<strong>Site web</strong> fait référence à Melios, accessible depuis
-				<a href="/" rel="external nofollow noopener" target="_blank"> https://www.melios.fr </a>
+				<strong>Website</strong> refers to Melios, accessible from
+				<a href="/" rel="external nofollow noopener" target="_blank"> https://www.melios.me </a>
 			</li>
 			<li>
-				<strong>Vous</strong> désigne l&apos;entité légale au nom de laquelle cet individu accède ou
-				utilise le site web, le cas échéant.
+				<strong>You</strong> means the individual accessing or using the Website, or a company, or any
+				legal entity on behalf of which such individual is accessing or using the Website, as applicable.
 			</li>
 		</ul>
-		<h1 class="text-xl mb-4 mt-6">L&apos;utilisation des cookies</h1>
-		<h2>Type de cookies que nous utilisons</h2>
+		<h1 class="text-xl mb-4 mt-6">The Use of Cookies</h1>
+		<h2>Types of Cookies We Use</h2>
 		<p>
-			Les cookies peuvent être des «cookies persistants» ou des «cookies de session». Les cookies
-			persistants demeurent sur votre ordinateur personnel ou votre appareil mobile lorsque vous
-			êtes hors ligne, tandis que les cookies de session sont supprimés dès que vous fermez votre
-			navigateur web.
+			Cookies can be "persistent" or "session" cookies. Persistent cookies remain on your personal
+			computer or mobile device when you go offline, while session cookies are deleted as soon as
+			you close your web browser.
 		</p>
-		<p>
-			Nous utilisons à la fois des cookies de session et des cookies persistants aux fins énoncées
-			ci-dessous :
-		</p>
+		<p>We use both session and persistent cookies for the purposes set out below:</p>
 		<ul>
 			<li>
 				<p>
-					<strong>Cookies nécessaires / essentiels</strong>
+					<strong>Necessary / Essential Cookies</strong>
 				</p>
-				<p>Type : Cookies de session</p>
-				<p>Administrés par : Nous</p>
+				<p>Type: Session Cookies</p>
+				<p>Administered by: Us</p>
 				<p>
-					Objectif : Ces cookies sont essentiels pour vous fournir les services disponibles sur le
-					site web et vous permettre d&apos;utiliser certaines de ses fonctionnalités. Ils
-					contribuent à authentifier les utilisateurs et à prévenir toute utilisation frauduleuse
-					des comptes d&apos;utilisateur. Sans ces cookies, les services que vous avez demandés ne
-					peuvent pas être fournis, et nous n&apos;utilisons ces cookies que pour vous fournir ces
+					Purpose: These cookies are essential to provide you with services available through the
+					Website and to enable you to use some of its features. They help to authenticate users and
+					prevent fraudulent use of user accounts. Without these cookies, the services that you have
+					asked for cannot be provided, and we only use these cookies to provide you with those
 					services.
 				</p>
 			</li>
 			<li>
 				<p>
-					<strong>Cookies de fonctionnalité</strong>
+					<strong>Functionality Cookies</strong>
 				</p>
-				<p>Type : Cookies persistants</p>
-				<p>Administrés par : Nous</p>
+				<p>Type: Persistent Cookies</p>
+				<p>Administered by: Us</p>
 				<p>
-					Objectif : Ces cookies nous permettent de mémoriser les choix que vous faites lorsque vous
-					utilisez le site web, tels que la mémorisation de vos informations de connexion ou de vos
-					préférences linguistiques. Le but de ces cookies est de vous offrir une expérience plus
-					personnelle et d&apos;éviter que vous ayez à réintroduire vos préférences à chaque fois
-					que vous utilisez le site web.
+					Purpose: These cookies allow us to remember choices you make when you use the Website,
+					such as remembering your login details or language preference. The purpose of these
+					cookies is to provide you with a more personal experience and to avoid you having to
+					re-enter your preferences every time you use the Website.
 				</p>
 			</li>
 		</ul>
-		<h2>Vos choix concernant les cookies</h2>
+		<h2 class="text-xl mb-4 mt-6">Your Choices Regarding Cookies</h2>
 		<p>
-			Si vous préférez éviter l&apos;utilisation de cookies sur le site web, vous devez d&apos;abord
-			désactiver l&apos;utilisation des cookies dans votre navigateur, puis supprimer les cookies
-			enregistrés dans votre navigateur associés à ce site web. Vous pouvez utiliser cette option
-			pour empêcher l&apos;utilisation de cookies à tout moment.
+			If you prefer to avoid the use of cookies on the Website, you must first disable the use of
+			cookies in your browser, then delete the cookies saved in your browser associated with this
+			website. You may use this option for preventing the use of cookies at any time.
 		</p>
 		<p>
-			Si vous n&apos;acceptez pas nos cookies, vous pouvez rencontrer des désagréments lors de
-			l&apos;utilisation du site web, et certaines fonctionnalités peuvent ne pas fonctionner
-			correctement.
+			If you do not accept our cookies, you may experience some inconvenience in your use of the
+			Website, and some features may not function properly.
 		</p>
 		<p>
-			Si vous souhaitez supprimer les cookies ou donner des instructions à votre navigateur web pour
-			supprimer ou refuser les cookies, veuillez consulter les pages d&apos;aide de votre navigateur
-			web.
+			If you want to delete cookies or instruct your web browser to delete or refuse cookies, please
+			visit the help pages of your web browser.
 		</p>
 		<ul class="flex flex-col gap-10 mt-6">
 			<li>
 				<p>
-					Pour le navigateur web Chrome, veuillez visiter cette page de Google :
+					For the Chrome web browser, please visit this page from Google:
 					<a
 						href="https://support.google.com/accounts/answer/32050"
 						rel="external nofollow noopener"
@@ -128,7 +117,7 @@
 			</li>
 			<li>
 				<p>
-					Pour le navigateur web Internet Explorer, veuillez visiter cette page de Microsoft :
+					For the Internet Explorer web browser, please visit this page from Microsoft:
 					<a
 						href="http://support.microsoft.com/kb/278835"
 						rel="external nofollow noopener"
@@ -140,7 +129,7 @@
 			</li>
 			<li>
 				<p>
-					Pour le navigateur web Firefox, veuillez visiter cette page de Mozilla :
+					For the Firefox web browser, please visit this page from Mozilla:
 					<a
 						href="https://support.mozilla.org/en-US/kb/delete-cookies-remove-info-websites-stored"
 						rel="external nofollow noopener"
@@ -152,7 +141,7 @@
 			</li>
 			<li>
 				<p>
-					Pour le navigateur web Safari, veuillez visiter cette page d&apos;Apple :
+					For the Safari web browser, please visit this page from Apple:
 					<a
 						href="https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac"
 						rel="external nofollow noopener"
@@ -163,28 +152,22 @@
 				</p>
 			</li>
 		</ul>
+		<p>For any other web browser, please visit your web browser's official web pages.</p>
+		<h2>More Information about Cookies</h2>
 		<p>
-			Pour tout autre navigateur web, veuillez consulter les pages officielles de votre navigateur
-			web.
-		</p>
-		<h2>Plus d&apos;informations sur les cookies</h2>
-		<p>
-			Vous pouvez en apprendre davantage sur les cookies ici :
+			You can learn more about cookies here:
 			<a href="https://www.termsfeed.com/blog/cookies/" target="_blank">
-				Tout sur les cookies par TermsFeed
+				All About Cookies by TermsFeed
 			</a>
 			.
 		</p>
-		<h2>Contactez-nous</h2>
-		<p>
-			Si vous avez des questions concernant cette Politique relative aux cookies, vous pouvez nous
-			contacter :
-		</p>
+		<h2 class="text-xl mb-4 mt-6">Contact Us</h2>
+		<p>If you have any questions about this Cookie Policy, you can contact us:</p>
 		<ul>
 			<li>
-				En visitant cette page sur notre site web :
+				By visiting this page on our website:
 				<a href="/cookies" rel="external nofollow noopener" target="_blank">
-					https://www.melios.fr/cookies
+					https://www.melios.me/cookies
 				</a>
 			</li>
 		</ul>

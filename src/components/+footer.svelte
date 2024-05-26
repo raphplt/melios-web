@@ -4,7 +4,7 @@
 </script>
 
 <footer
-	class="flex flex-col sm:flex-row justify-evenly items-start sm:items-center bg-gray-800 pt-20"
+	class="flex flex-col sm:flex-row justify-evenly items-start sm:items-center bg-gray-800 pt-20 pb-4"
 >
 	<div class="flex flex-col items-start justify-start p-20 gap-5">
 		<img src={MeliosLogo} alt="Melios Logo" class="w-20 h-20" />
@@ -49,13 +49,13 @@
 					</a>
 				</li>
 				<li class="hover:text-gray-300">
-					<a href="https://www.instagram.com/melios" target="_blank" rel="noopener noreferrer">
+					<a href="https://www.instagram.com/melios_app" target="_blank" rel="noopener noreferrer">
 						Instagram
 					</a>
 				</li>
 				<li class="hover:text-gray-300">
-					<a href="https://www.twitter.com/melios" target="_blank" rel="noopener noreferrer">
-						Twitter
+					<a href="mailto:melios.customer@gmail.com" target="_blank" rel="noopener noreferrer">
+						Email
 					</a>
 				</li>
 			</ul>
