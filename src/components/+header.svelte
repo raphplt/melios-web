@@ -129,6 +129,8 @@
 			<li aria-current={$page.url.pathname.startsWith('/faq') ? 'page' : undefined}>
 				<button class="font-semibold" on:click|preventDefault={navigateToFAQ}>FAQ</button>
 			</li>
+			<li aria-current={$page.url.pathname.startsWith('/contact') ? 'page' : undefined}>
+				<a href="/contact" class="font-semibold" on:click={closeMenu}>Contact</a>
 		</ul>
 	{/if}
 </header>

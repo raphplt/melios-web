@@ -11,6 +11,7 @@
 	import { slide } from 'svelte/transition';
 	import Background from '../components/+background.svelte';
 	import Footer from '../components/+footer.svelte';
+	import Contact from '../components/+contact.svelte';
 
 	const styleH2 = 'sm:text-4xl text-2xl font-spectral text-center';
 
@@ -127,6 +128,29 @@
 					{/if}
 				</div>
 			{/each}
+		</div>
+	</section>
+	<section class="flex items-center justify-around min-h-[30vh] py-12">
+		<div class="flex flex-col items-center justify-center">
+
+			<Contact />
+			<a href="https://fr.freepik.com/vecteurs-libre/illustration-concept-nettoyage-boite-reception_7769813.htm#fromView=search&page=1&position=21&uuid=64c4cc6c-d300-4c99-a4f5-26df49012018" class="text-gray-400">Image de storyset sur Freepik</a>
+		</div>
+		<div>
+			<h2 class={styleH2}>Nous contacter</h2>
+			<div>
+				<h3>
+					LinkedIn
+				</h3>
+				
+				<h3>
+					Instagram
+				</h3>
+				<h3>
+					E-mail
+				</h3>
+			</div>
+			
 		</div>
 	</section>
 	<section>

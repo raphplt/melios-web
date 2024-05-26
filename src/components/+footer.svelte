@@ -20,13 +20,13 @@
 					<a href="/coming-soon">About Us</a>
 				</li>
 				<li class="hover:text-gray-300">
-					<a href="/coming-soon"> Careers </a>
+					<a href="/coming-soon">Careers</a>
 				</li>
 				<li class="hover:text-gray-300">
-					<a href="/coming-soon"> Contact Us </a>
+					<a href="/coming-soon">Contact Us</a>
 				</li>
 				<li class="hover:text-gray-300">
-					<a href="/coming-soon"> Community </a>
+					<a href="/coming-soon">Community</a>
 				</li>
 			</ul>
 		</div>
@@ -36,7 +36,7 @@
 			<ul class="flex flex-col justify-evenly gap-4 items-start text-white">
 				<li class="hover:text-gray-300">
 					<a
-						href="https://www.linkedin.com/company/melios"
+						href="https://www.linkedin.com/in/melios-the-app-4a586b30b/"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
