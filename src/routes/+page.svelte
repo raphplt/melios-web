@@ -134,7 +134,7 @@
 			{/each}
 		</div>
 	</section>
-	<section class="flex items-center justify-around min-h-[30vh] sm:py-24 py-8 gap-5 sm:flex-row flex-col">
+	<section class="flex items-center justify-around min-h-[30vh] sm:py-24 py-8 gap-5 sm:flex-row flex-col" id="contact">
 		<div class="flex flex-col items-center justify-center">
 			<Contact />
 			<a
