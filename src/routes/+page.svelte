@@ -12,6 +12,10 @@
 	import Background from '../components/+background.svelte';
 	import Footer from '../components/+footer.svelte';
 	import Contact from '../components/+contact.svelte';
+	import LinkedIn from '~icons/mdi/linkedin';
+	import Instagram from '~icons/mdi/instagram';
+	import Envelope from '~icons/mdi/envelope';
+	
 
 	const styleH2 = 'sm:text-4xl text-2xl font-spectral text-center';
 
@@ -130,27 +134,32 @@
 			{/each}
 		</div>
 	</section>
-	<section class="flex items-center justify-around min-h-[30vh] py-12">
+	<section class="flex items-center justify-around min-h-[30vh] sm:py-24 py-8 gap-5 sm:flex-row flex-col">
 		<div class="flex flex-col items-center justify-center">
-
 			<Contact />
-			<a href="https://fr.freepik.com/vecteurs-libre/illustration-concept-nettoyage-boite-reception_7769813.htm#fromView=search&page=1&position=21&uuid=64c4cc6c-d300-4c99-a4f5-26df49012018" class="text-gray-400">Image de storyset sur Freepik</a>
+			<a
+				href="https://fr.freepik.com/vecteurs-libre/illustration-concept-nettoyage-boite-reception_7769813.htm#fromView=search&page=1&position=21&uuid=64c4cc6c-d300-4c99-a4f5-26df49012018"
+				class="text-gray-400 sm:text-md text-sm">Image de storyset sur Freepik</a
+			>
 		</div>
 		<div>
 			<h2 class={styleH2}>Nous contacter</h2>
-			<div>
-				<h3>
-					LinkedIn
-				</h3>
-				
-				<h3>
-					Instagram
-				</h3>
-				<h3>
-					E-mail
-				</h3>
+			<div class="flex flex-col gap-5 items-start justify-center mt-8">
+				<span class="flex items-center text-lg">
+					<LinkedIn class="mr-2" />
+					 LinkedIn
+				</span>
+
+				<span class="flex items-center text-lg">
+					<Instagram class="mr-2" />
+					 Instagram
+				</span>
+
+				<span class="flex items-center text-lg">
+					<Envelope class="mr-2" />
+					 E-mail
+				</span>
 			</div>
-			
 		</div>
 	</section>
 	<section>

@@ -8,44 +8,44 @@
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 
-    let showMenu = writable(false);
-    let isAtTop = writable(true);
-    let isMobile = writable(false); // Ajout de la variable isMobile
+	let showMenu = writable(false);
+	let isAtTop = writable(true);
+	let isMobile = writable(false); // Ajout de la variable isMobile
 
-    function toggleMenu() {
-        showMenu.update((value) => !value);
-    }
+	function toggleMenu() {
+		showMenu.update((value) => !value);
+	}
 
-    function handleResize() {
-        if (typeof window !== 'undefined') {
-            showMenu.set(!(window.innerWidth < 768));
-            isMobile.set(window.innerWidth < 768); 
-        }
-    }
+	function handleResize() {
+		if (typeof window !== 'undefined') {
+			showMenu.set(!(window.innerWidth < 768));
+			isMobile.set(window.innerWidth < 768);
+		}
+	}
 
-    function closeMenu() {
-        if (typeof window !== 'undefined' && window.innerWidth < 768) {
-            showMenu.set(false);
-        }
-    }
+	function closeMenu() {
+		if (typeof window !== 'undefined' && window.innerWidth < 768) {
+			showMenu.set(false);
+		}
+	}
 
-    function handleScroll() {
-        if (typeof window !== 'undefined') {
-            isAtTop.set(window.scrollY < 1);
-        }
-    }
-    onMount(() => {
-        if (typeof window !== 'undefined') {
-            window.addEventListener('resize', handleResize);
-            handleResize();
-            window.addEventListener('scroll', handleScroll);
-            handleScroll();
-            return () => {
-                window.removeEventListener('resize', handleResize);
-                window.removeEventListener('scroll', handleScroll);
-            };
-        }
-    });
+	function handleScroll() {
+		if (typeof window !== 'undefined') {
+			isAtTop.set(window.scrollY < 1);
+		}
+	}
+	onMount(() => {
+		if (typeof window !== 'undefined') {
+			window.addEventListener('resize', handleResize);
+			handleResize();
+			window.addEventListener('scroll', handleScroll);
+			handleScroll();
+			return () => {
+				window.removeEventListener('resize', handleResize);
+				window.removeEventListener('scroll', handleScroll);
+			};
+		}
+	});
 
 	async function navigateToPhoneSection() {
 		await goto('/');
@@ -74,32 +74,23 @@
 	}
 
 	const styleLink = 'hover:italic hover:font-semibold transition duration-300';
-
 </script>
 
 <header
-	class="{$isAtTop
-		? 'bg-transparent'
-		: 'bg-white backdrop-blur'}
+	class="{$isAtTop ? 'bg-transparent' : 'bg-white backdrop-blur'}
 		
 		{$isMobile && 'bg-white'}
 		flex justify-center sm:flex-row flex-col gap-20 sm:gap-0 z-10 font-semibold py-3 top-0 sm:justify-around sm:items-center w-[100vw] fixed"
-	
 >
 	<div class="flex justify-between w-11/12 mx-auto sm:w-fit sm:mx-0">
-		<a
-			href="/"
-			class="hover:font-semibold underline-offset-2 flex items-center flex-col gap-1"
-		>
+		<a href="/" class="hover:font-semibold underline-offset-2 flex items-center flex-col gap-1">
 			<a
 				href="/"
 				class="w-10 h-10 cursor-pointer flex flex-row gap-2 items-center"
 				on:click={closeMenu}
 			>
 				<img src={MeliosLogo} alt="home" />
-				<p class={styleLink}>
-				Melios
-				</p>
+				<p class={styleLink}>Melios</p>
 			</a>
 		</a>
 		<button
@@ -142,6 +133,7 @@
 			</li>
 			<li aria-current={$page.url.pathname.startsWith('/contact') ? 'page' : undefined}>
 				<a href="/contact" class="font-semibold" on:click={closeMenu}>Contact</a>
+			</li>
 		</ul>
 	{/if}
 </header>
