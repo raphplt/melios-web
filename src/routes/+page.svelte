@@ -145,20 +145,22 @@
 		<div>
 			<h2 class={styleH2}>Nous contacter</h2>
 			<div class="flex flex-col gap-5 items-start justify-center mt-8">
-				<span class="flex items-center text-lg">
+				<a class="flex items-center text-lg" 
+						href="https://www.linkedin.com/in/melios-the-app-4a586b30b/"
+				>
 					<LinkedIn class="mr-2" />
 					 LinkedIn
-				</span>
+				</a>
 
-				<span class="flex items-center text-lg">
+				<a class="flex items-center text-lg" href="https://www.instagram.com/melios_app">
 					<Instagram class="mr-2" />
 					 Instagram
-				</span>
+				</a>
 
-				<span class="flex items-center text-lg">
+				<a class="flex items-center text-lg" href="mailto:melios.customer@gmail.com">
 					<Envelope class="mr-2" />
 					 E-mail
-				</span>
+				</a>
 			</div>
 		</div>
 	</section>
