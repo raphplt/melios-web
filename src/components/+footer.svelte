@@ -72,6 +72,8 @@
 				<li class="hover:text-gray-300">
 					<a href="/privacy">Privacy Policy</a>
 				</li>
+				<li class="hover:text-gray-300">
+					<a href="/apple-privacy">Apple Privacy</a>
 				<li
 					class="hover:text
                 -gray-300"

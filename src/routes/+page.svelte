@@ -65,7 +65,7 @@
 				</a>
 			</div>
 			<div class="relative">
-				<p class="text-center text-lg mb-8 font-semibold">Soon available on:</p>
+				<p class="text-center text-lg mb-8 font-semibold">Now available on:</p>
 				<div class="flex items-center justify-center gap-10">
 					<a
 						href="https://www.apple.com/fr/app-store/"
@@ -74,7 +74,7 @@
 						<AppStore />
 					</a>
 					<a
-						href="https://play.google.com/store/apps?hl=fr&gl=US&pli=1"
+						href="https://play.google.com/apps/internaltest/4700965717540083664"
 						class="sm:w-44 w-28 hover:scale-105 transform transition duration-200 ease-in-out"
 					>
 						<GooglePlayStore />
