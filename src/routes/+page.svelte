@@ -68,13 +68,13 @@
 				<p class="text-center text-lg mb-8 font-semibold">Now available on:</p>
 				<div class="flex items-center justify-center gap-10">
 					<a
-						href="https://www.apple.com/fr/app-store/"
+						href="https://apps.apple.com/us/app/melios/id6664069292"
 						class="sm:w-40 w-24 hover:scale-105 transform transition duration-200 ease-in-out"
 					>
 						<AppStore />
 					</a>
 					<a
-						href="https://play.google.com/apps/internaltest/4700965717540083664"
+						href="https://forms.gle/pGecc2TkinYWRV7e9"
 						class="sm:w-44 w-28 hover:scale-105 transform transition duration-200 ease-in-out"
 					>
 						<GooglePlayStore />
