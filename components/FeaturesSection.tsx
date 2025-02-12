@@ -1,6 +1,9 @@
 export default function FeaturesSection() {
 	return (
-		<section className="min-h-screen flex items-center py-16 bg-backgroundSecondary">
+		<section
+			className="min-h-screen flex items-center py-16 bg-backgroundSecondary"
+			id="features"
+		>
 			<div className="container mx-auto px-4">
 				<h2 className="text-4xl font-bold text-center text-text mb-12">
 					Fonctionnalités clés de Melios

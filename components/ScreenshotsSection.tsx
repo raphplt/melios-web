@@ -42,7 +42,10 @@ const screenshots = [
 
 export default function ScreenshotsSection() {
 	return (
-		<section className="min-h-screen flex flex-col items-center py-16 bg-default-50">
+		<section
+			className="min-h-screen flex flex-col items-center py-16 bg-default-50"
+			id="screenshots"
+		>
 			<h2 className="text-4xl font-bold text-center mb-12 text-default-900 max-w-[90%]">
 				Aperçu de l&apos;application
 			</h2>

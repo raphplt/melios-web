@@ -5,7 +5,10 @@ import Image from "next/image";
 
 export default function DownloadSection() {
 	return (
-		<section className="flex flex-col items-center justify-center bg-gradient-to-r from-primary to-secondary text-white min-h-screen py-16 px-6 text-center">
+		<section
+			className="flex flex-col items-center justify-center bg-gradient-to-r from-primary to-secondary text-white min-h-screen py-16 px-6 text-center"
+			id="download"
+		>
 			<h2 className="text-5xl font-extrabold mb-6">Téléchargez Melios</h2>
 			<p className="text-xl max-w-2xl mb-8">
 				Transformez votre quotidien avec Melios ! Disponible sur iOS et Android.

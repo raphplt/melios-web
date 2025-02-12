@@ -10,8 +10,8 @@ export default function Home() {
 	return (
 		<>
 			<HeroSection />
-			<ScreenshotsSection />
 			<FeaturesSection />
+			<ScreenshotsSection />
 			<DownloadSection />
 			<ContactSection />
 			<Footer />

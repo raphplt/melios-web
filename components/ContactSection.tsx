@@ -2,7 +2,10 @@ import { Button, Form, Input, Textarea } from "@heroui/react";
 
 export default function ContactSection() {
 	return (
-		<section className="min-h-[50vh] flex items-center py-16 bg-background">
+		<section
+			className="min-h-[50vh] flex items-center py-16 bg-background"
+			id="contact"
+		>
 			<div className="container mx-auto px-4">
 				<h2 className="text-4xl font-bold text-center text-text mb-12">
 					Contactez-nous

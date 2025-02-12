@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import Head from "next/head";
 import Header from "@/components/Header";
+import HeadSection from "@/components/HeadSection";
 
 const poppins = Poppins({
 	subsets: ["latin"],
@@ -21,13 +21,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
 	return (
 		<html lang="fr">
-			<Head>
-				<title>Melios - Application Mobile</title>
-				<meta
-					name="description"
-					content="Découvrez Melios, l'application mobile qui révolutionne votre quotidien."
-				/>
-			</Head>
+			<HeadSection />
 			<body className={`${poppins.className} antialiased`}>
 				<Header />
 				{children}
