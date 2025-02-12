@@ -53,10 +53,10 @@
 		<img src={background} alt="background" class="w-[100vw] h-[100vh] absolute top-0" />
 		<div class="flex flex-col gap-20 lg:gap-64">
 			<div class="relative flex flex-col gap-5 justify-center items-center mt-48">
-				<h1 class="text-2xl sm:text-5xl text-center font-spectral w-10/12 sm:w-1/2 mx-auto white">
+				<h1 class="text-2xl sm:text-5xl text-center font-spectral w-10/12 sm:w-1/2 mx-auto white text-black">
 					Embrace Change, Earn Rewards! Our app turns your habits into triumphs!
 				</h1>
-				<h2 class="text-center sm:text-xl w-10/12 sm:w-1/3 text-gray-700 mb-5">
+				<h2 class="text-center sm:text-xl w-10/12 sm:w-1/3 text-gray-800 mb-5">
 					Unlock your potential, cultivate wellness, and thrive with our personalized approach to
 					self-improvement and habit-building.
 				</h2>
