@@ -1,56 +1,68 @@
 import Image from "next/image";
 
+const screenshots = [
+	{
+		title: "Accueil",
+		description: "Gérez vos habitudes quotidiennes et suivez votre progression.",
+		image: "/images/Home.png",
+		alt: "Home",
+	},
+	{
+		title: "Progression",
+		description: "Suivez vos niveaux et objectifs par catégorie.",
+		image: "/images/Progression.png",
+		alt: "Progression",
+	},
+	{
+		title: "Récompenses",
+		description: "Débloquez des récompenses en atteignant vos objectifs.",
+		image: "/images/Rewards.png",
+		alt: "Rewards",
+	},
+	{
+		title: "Communauté",
+		description:
+			"Interagissez avec d'autres utilisateurs et comparez vos progrès.",
+		image: "/images/Community.png",
+		alt: "Community",
+	},
+	// {
+	// 	title: "Détail d'une habitude",
+	// 	description: "Configurez chaque habitude avec une fréquence et des rappels.",
+	// 	image: "/images/HabitDetail.png",
+	// 	alt: "Habit Detail",
+	// },
+	// {
+	// 	title: "Détail d'une récompense",
+	// 	description: "Découvrez des guides et contenus exclusifs à débloquer.",
+	// 	image: "/images/RewardDetail.png",
+	// 	alt: "Reward Detail",
+	// },
+];
+
 export default function ScreenshotsSection() {
 	return (
-		<section className="min-h-screen flex flex-col items-center py-16 bg-white">
-			<h2 className="text-4xl font-bold text-center mb-12">
+		<section className="min-h-screen flex flex-col items-center py-16 bg-default-50">
+			<h2 className="text-4xl font-bold text-center mb-12 text-default-900">
 				Aperçu de l&apos;application
 			</h2>
-			<div className="flex flex-wrap justify-center gap-8">
-				<Image
-					src="/images/Home.png"
-					alt="Home"
-					width={256}
-					height={512}
-					className="w-64 h-auto rounded-lg shadow-lg"
-				/>
-				<Image
-					src="/images/Progression.png"
-					alt="Progression"
-					width={256}
-					height={512}
-					className="w-64 h-auto rounded-lg shadow-lg"
-				/>
-				<Image
-					src="/images/Rewards.png"
-					alt="Rewards"
-					width={256}
-					height={512}
-					className="w-64 h-auto rounded-lg shadow-lg"
-				/>
-
-				<Image
-					src="/images/Community.png"
-					alt="Community"
-					width={256}
-					height={512}
-					className="w-64 h-auto rounded-lg shadow-lg"
-				/>
-
-				<Image
-					src="/images/HabitDetail.png"
-					alt="HabitDetail"
-					width={256}
-					height={512}
-					className="w-64 h-auto rounded-lg shadow-lg"
-				/>
-				<Image
-					src="/images/RewardDetail.png"
-					alt="RewardDetail"
-					width={256}
-					height={512}
-					className="w-64 h-auto rounded-lg shadow-lg"
-				/>
+			<div className="flex flex-col items-center gap-12 w-full">
+				{screenshots.map((screen, index) => (
+					<div
+						key={index}
+						className={`flex items-center max-w-[50%] w-full gap-8 ${
+							index % 2 === 0 ? "flex-row" : "flex-row-reverse"
+						}`}
+					>
+						<div className="flex-1 w-fit">
+							<h3 className="text-2xl font-semibold mb-2 text-default-900">
+								{screen.title}
+							</h3>
+							<p className="text-default-700 w-2/3">{screen.description}</p>
+						</div>
+						<Image src={screen.image} alt={screen.alt} width={256} height={512} />
+					</div>
+				))}
 			</div>
 		</section>
 	);
