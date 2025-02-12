@@ -1,4 +1,5 @@
 import { Button } from "@heroui/react";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 export default function HeroSection() {
 	return (
@@ -13,13 +14,15 @@ export default function HeroSection() {
 				<div className="flex justify-center gap-4">
 					<Button
 						variant="solid"
-						className="bg-white text-primary font-semibold py-3 px-6 rounded-lg shadow-lg hover:bg-gray-100 transition"
+						color="primary"
+						endContent={<Icon icon="akar-icons:arrow-right" width={24} />}
 					>
 						Découvrir l&apos;application
 					</Button>
 					<Button
-						variant="bordered"
-						className="border border-white text-white font-semibold py-3 px-6 rounded-lg hover:bg-white hover:text-primary transition"
+						className="bg-white text-primary"
+						color="primary"
+						endContent={<Icon icon="akar-icons:arrow-right" width={24} />}
 					>
 						En savoir plus
 					</Button>

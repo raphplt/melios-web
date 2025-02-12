@@ -48,7 +48,10 @@ export default {
 			themes: {
 				light: {
 					colors: {
-						primary: "rgb(8, 32, 159)",
+						primary: {
+							DEFAULT: "rgb(8, 32, 159)",
+							foreground: "#ffffff",
+						},
 						secondary: "rgb(135, 206, 250)",
 						background: "#ffffff",
 						danger: "rgb(255, 59, 48)",
@@ -58,7 +61,10 @@ export default {
 				},
 				dark: {
 					colors: {
-						primary: "rgb(8, 32, 159)",
+						primary: {
+							DEFAULT: "rgb(8, 32, 159)",
+							foreground: "#ffffff",
+						},
 						secondary: "rgb(135, 206, 250)",
 						background: "#ffffff",
 						danger: "rgb(255, 59, 48)",

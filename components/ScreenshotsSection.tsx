@@ -43,24 +43,34 @@ const screenshots = [
 export default function ScreenshotsSection() {
 	return (
 		<section className="min-h-screen flex flex-col items-center py-16 bg-default-50">
-			<h2 className="text-4xl font-bold text-center mb-12 text-default-900">
+			<h2 className="text-4xl font-bold text-center mb-12 text-default-900 max-w-[90%]">
 				Aperçu de l&apos;application
 			</h2>
-			<div className="flex flex-col items-center gap-12 w-full">
+			<div className="flex flex-col items-center gap-12 w-full px-4 md:px-0">
 				{screenshots.map((screen, index) => (
 					<div
 						key={index}
-						className={`flex items-center max-w-[50%] w-full gap-8 ${
-							index % 2 === 0 ? "flex-row" : "flex-row-reverse"
+						className={`flex flex-col md:flex-row items-center max-w-[90%] md:max-w-[50%] w-full gap-8 ${
+							index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
 						}`}
 					>
-						<div className="flex-1 w-fit">
+						<div className="flex-1 w-full md:w-fit text-center md:text-left">
 							<h3 className="text-2xl font-semibold mb-2 text-default-900">
 								{screen.title}
 							</h3>
-							<p className="text-default-700 w-2/3">{screen.description}</p>
+							<p className="text-default-700 w-full md:w-2/3 mx-auto md:mx-0">
+								{screen.description}
+							</p>
 						</div>
-						<Image src={screen.image} alt={screen.alt} width={256} height={512} />
+						<div className="flex-1 w-full md:w-auto">
+							<Image
+								src={screen.image}
+								alt={screen.alt}
+								width={256}
+								height={512}
+								className=" mx-auto"
+							/>
+						</div>
 					</div>
 				))}
 			</div>
