@@ -9,15 +9,15 @@ export default function Header() {
 	const toggleMenu = () => setMenuOpen(!menuOpen);
 
 	return (
-		<header className="bg-default-50 text-default-900 shadow fixed top-0 left-0 right-0 z-50">
-			<div className="container mx-auto px-4 flex items-center justify-between h-16">
-				<Link href="/" className="flex items-center space-x-2 cursor-pointer">
+		<header className="bg-white/30 backdrop-blur-lg border border-white/20 text-default-900 shadow fixed top-0 left-0 right-0 z-50">
+			<div className="container mx-auto px-4 flex items-center justify-between h-14">
+				<Link href="/" className="flex items-center space-x-4 cursor-pointer">
 					<Image src="/images/Logo_Melios.png" alt="Melios" width={40} height={40} />
-					<div className="text-2xl font-bold">Melios</div>
+					<div className="text-xl font-bold">Melios</div>
 				</Link>
 
 				<nav className="hidden md:block">
-					<ul className="flex space-x-8">
+					<ul className="flex space-x-8 text-sm">
 						<li>
 							<Link href="#features" className="hover:text-blue-600">
 								Fonctionnalités

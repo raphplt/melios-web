@@ -1,5 +1,6 @@
 import { heroui } from "@heroui/react";
 import tailwindcssMotion from "tailwindcss-motion";
+import tailwindcssIntersect from "tailwindcss-intersect";
 
 import type { Config } from "tailwindcss";
 
@@ -75,5 +76,6 @@ export default {
 			},
 		}),
 		tailwindcssMotion,
+		tailwindcssIntersect,
 	],
 } satisfies Config;

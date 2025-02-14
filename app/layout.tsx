@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import HeadSection from "@/components/HeadSection";
+import ObserverProvider from "@/context/ObserverProvider";
 
 const poppins = Poppins({
 	subsets: ["latin"],
@@ -21,11 +22,13 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
 	return (
 		<html lang="fr">
-			<HeadSection />
-			<body className={`${poppins.className} antialiased`}>
-				<Header />
-				{children}
-			</body>
+			<ObserverProvider>
+				<HeadSection />
+				<body className={`${poppins.className} antialiased`}>
+					<Header />
+					{children}
+				</body>
+			</ObserverProvider>
 		</html>
 	);
 }

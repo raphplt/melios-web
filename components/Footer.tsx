@@ -17,8 +17,7 @@ export default function Footer() {
 
 						<h3 className="text-xl font-bold my-4">Melios</h3>
 						<p className="text-sm text-gray-300 w-2/3">
-							Simplifiez votre quotidien avec l’application mobile Melios. Découvrez
-							une expérience unique alliant performance et innovation.
+							Soyez récompensés pour vos bonnes habitudes.
 						</p>
 					</div>
 					<div>
@@ -37,6 +36,31 @@ export default function Footer() {
 							<li>
 								<a href="#download" className="hover:underline">
 									Téléchargement
+								</a>
+							</li>
+							<li>
+								<a href="#contact" className="hover:underline">
+									Contact
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div>
+						<h3 className="text-xl font-bold mb-4">Légal</h3>
+						<ul className="space-y-2">
+							<li>
+								<a href="/privacy" className="hover:underline">
+									Confidentialité
+								</a>
+							</li>
+							<li>
+								<a href="/cookies" className="hover:underline">
+									Cookies
+								</a>
+							</li>
+							<li>
+								<a href="/terms" className="hover:underline">
+									Mentions légales
 								</a>
 							</li>
 							<li>
