@@ -96,8 +96,8 @@ export default function ContactSection() {
 								// Convertit la valeur string en Set
 								selectedKeys={new Set([field.value])}
 								// Extrait la clé sélectionnée depuis le Set et la passe à react-hook-form
-								onSelectionChange={(keys: Set<string>) => {
-									const selectedKey = Array.from(keys)[0] || "";
+								onSelectionChange={(keys) => {
+									const selectedKey = keys.currentKey || "";
 									field.onChange(selectedKey);
 								}}
 								errorMessage={
