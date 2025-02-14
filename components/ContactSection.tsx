@@ -150,7 +150,7 @@ export default function ContactSection() {
 					</Button>
 				</Form>
 				{showAlert && (
-					<Alert className="mt-4">
+					<Alert className="mt-4 mx-auto" color="success">
 						<p className="text-sm">Formulaire envoyé !</p>
 					</Alert>
 				)}
