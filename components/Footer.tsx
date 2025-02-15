@@ -1,4 +1,5 @@
 "use client";
+import { Link } from "@heroui/react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Image from "next/image";
 
@@ -24,24 +25,24 @@ export default function Footer() {
 						<h3 className="text-xl font-bold mb-4">Liens rapides</h3>
 						<ul className="space-y-2">
 							<li>
-								<a href="#features" className="hover:underline">
+								<Link href="#features" className="text-default-100 text-sm">
 									Fonctionnalités
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a href="#screenshots" className="hover:underline">
+								<Link href="#screenshots" className="text-default-100 text-sm">
 									Aperçu
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a href="#download" className="hover:underline">
+								<Link href="#download" className="text-default-100 text-sm">
 									Téléchargement
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a href="#contact" className="hover:underline">
+								<Link href="#contact" className="text-default-100 text-sm">
 									Contact
-								</a>
+								</Link>
 							</li>
 						</ul>
 					</div>
@@ -49,24 +50,19 @@ export default function Footer() {
 						<h3 className="text-xl font-bold mb-4">Légal</h3>
 						<ul className="space-y-2">
 							<li>
-								<a href="/privacy" className="hover:underline">
+								<Link href="/privacy" className="text-default-100 text-sm">
 									Confidentialité
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a href="/cookies" className="hover:underline">
+								<Link href="/cookies" className="text-default-100 text-sm">
 									Cookies
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a href="/terms" className="hover:underline">
+								<Link href="/terms" className="text-default-100 text-sm">
 									Mentions légales
-								</a>
-							</li>
-							<li>
-								<a href="#contact" className="hover:underline">
-									Contact
-								</a>
+								</Link>
 							</li>
 						</ul>
 					</div>
@@ -74,19 +70,34 @@ export default function Footer() {
 						<h3 className="text-xl font-bold mb-4">Suivez-nous</h3>
 						<ul className="flex space-x-4">
 							<li>
-								<a href="#" className="hover:text-gray-300" aria-label="Facebook">
-									<Icon icon="akar-icons:facebook-fill" className="w-6 h-6" />
-								</a>
+								<Link
+									href="https://www.linkedin.com/in/melios-the-app/"
+									target="_blank"
+									className="hover:text-gray-300"
+									aria-label="LinkedIn"
+								>
+									<Icon icon="akar-icons:linkedin-fill" className="w-6 h-6" />
+								</Link>
 							</li>
 							<li>
-								<a href="#" className="hover:text-gray-300" aria-label="Twitter">
-									<Icon icon="akar-icons:twitter-fill" className="w-6 h-6" />
-								</a>
+								<Link
+									href="https://www.tiktok.com/@melios_app"
+									target="_blank"
+									className="hover:text-gray-300"
+									aria-label="Tiktok"
+								>
+									<Icon icon="akar-icons:tiktok-fill" className="w-6 h-6" />
+								</Link>
 							</li>
 							<li>
-								<a href="#" className="hover:text-gray-300" aria-label="Instagram">
+								<Link
+									href="https://instagram.com/melios_app"
+									className="hover:text-gray-300"
+									aria-label="Instagram"
+									target="_blank"
+								>
 									<Icon icon="akar-icons:instagram-fill" className="w-6 h-6" />
-								</a>
+								</Link>
 							</li>
 						</ul>
 					</div>
