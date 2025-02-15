@@ -7,24 +7,24 @@ import Link from "next/link";
 
 export default function HeroSection() {
 	return (
-		<section className="min-h-screen flex items-center justify-center bg-gradient-to-r from-primary to-secondary">
-			<div className=" text-white px-4 w-1/2 flex flex-col gap-y-6">
+		<section className="min-h-screen flex items-center justify-center bg-gradient-to-r from-primary to-secondary px-4 sm:px-6 lg:px-8">
+			<div className="text-white w-full sm:w-3/4 lg:w-1/2 flex flex-col gap-y-6">
 				<div className="motion-preset-compress flex flex-col">
-					<h1 className="text-5xl md:text-6xl font-bold text-center">
+					<h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center">
 						Commencez votre aventure avec
 						<span
 							className="from-primary to-primaryLight text-[clamp(1rem,10vw,2rem)] 
-							sm:text-[clamp(1rem,10vw,3rem)] font-bold text-center
-							text-5xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-b ml-2"
+                            sm:text-[clamp(1rem,10vw,3rem)] font-bold text-center
+                            text-4xl sm:text-5xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-b ml-2"
 						>
 							Melios
 						</span>
 					</h1>
 				</div>
-				<p className="text-lg text-center md:text-xl mb-8 motion-preset-focus motion-delay-300 text-default-100">
+				<p className="text-base sm:text-lg md:text-xl text-center mb-8 motion-preset-focus motion-delay-300 text-default-100">
 					La nouvelle façon de gérer votre quotidien avec simplicité et efficacité.
 				</p>
-				<div className="flex justify-center gap-6 mt-12">
+				<div className="flex flex-col sm:flex-row justify-center gap-6 mt-12">
 					<Button
 						variant="solid"
 						color="primary"
@@ -32,9 +32,9 @@ export default function HeroSection() {
 						as={Link}
 						href="#features"
 						className="motion-scale-in-[0.5] motion-translate-x-in-[-28%] motion-translate-y-in-[26%] 
-						motion-opacity-in-[0%] motion-rotate-in-[-10deg] motion-blur-in-[5px] motion-duration-[0.35s]
-						 motion-duration-[0.53s]/scale motion-duration-[0.53s]/translate motion-duration-[0.63s]/rotate 
-						 motion-delay-300"
+                        motion-opacity-in-[0%] motion-rotate-in-[-10deg] motion-blur-in-[5px] motion-duration-[0.35s]
+                         motion-duration-[0.53s]/scale motion-duration-[0.53s]/translate motion-duration-[0.63s]/rotate 
+                         motion-delay-300"
 					>
 						Découvrir l&apos;application
 					</Button>
@@ -45,9 +45,9 @@ export default function HeroSection() {
 								variant="faded"
 								endContent={<Download />}
 								className="motion-scale-in-[0.5] motion-translate-x-in-[-28%] motion-translate-y-in-[26%] 
-								motion-opacity-in-[0%] motion-rotate-in-[-10deg] motion-blur-in-[5px] motion-duration-[0.35s] 
-								motion-duration-[0.53s]/scale motion-duration-[0.53s]/translate motion-duration-[0.63s]/rotate 
-								motion-delay-400"
+                                motion-opacity-in-[0%] motion-rotate-in-[-10deg] motion-blur-in-[5px] motion-duration-[0.35s] 
+                                motion-duration-[0.53s]/scale motion-duration-[0.53s]/translate motion-duration-[0.63s]/rotate 
+                                motion-delay-400"
 							>
 								Télécharger
 							</Button>
