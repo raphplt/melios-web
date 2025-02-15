@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import HeadSection from "@/components/HeadSection";
 import ObserverProvider from "@/context/ObserverProvider";
+import Footer from "@/components/Footer";
 
 const poppins = Poppins({
 	subsets: ["latin"],
@@ -27,6 +28,7 @@ export default function RootLayout({
 				<body className={`${poppins.className} antialiased`}>
 					<Header />
 					{children}
+					<Footer />
 				</body>
 			</ObserverProvider>
 		</html>

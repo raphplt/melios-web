@@ -38,6 +38,15 @@ export default function Header() {
 								Contact
 							</Link>
 						</li>
+						<li>
+							<Link
+								href="/articles"
+								onClick={() => setMenuOpen(false)}
+								className="hover:text-blue-600"
+							>
+								Articles
+							</Link>
+						</li>
 					</ul>
 				</nav>
 
@@ -121,6 +130,15 @@ export default function Header() {
 								className="block py-2 hover:text-blue-600"
 							>
 								Contact
+							</Link>
+						</li>
+						<li>
+							<Link
+								href="/articles"
+								onClick={() => setMenuOpen(false)}
+								className="block py-2 hover:text-blue-600"
+							>
+								Articles
 							</Link>
 						</li>
 					</ul>

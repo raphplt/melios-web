@@ -5,26 +5,26 @@ const screenshots = [
 		title: "Accueil",
 		description: "Gérez vos habitudes quotidiennes et suivez votre progression.",
 		image: "/images/Home.png",
-		alt: "Home",
+		alt: "Melios home screen",
 	},
 	{
 		title: "Progression",
 		description: "Suivez vos niveaux et objectifs par catégorie.",
 		image: "/images/Progression.png",
-		alt: "Progression",
+		alt: "Melios progression screen",
 	},
 	{
 		title: "Récompenses",
 		description: "Débloquez des récompenses en atteignant vos objectifs.",
 		image: "/images/Rewards.png",
-		alt: "Rewards",
+		alt: "Melios rewards screen",
 	},
 	{
 		title: "Communauté",
 		description:
 			"Interagissez avec d'autres utilisateurs et comparez vos progrès.",
 		image: "/images/Community.png",
-		alt: "Community",
+		alt: "Melios agora screen",
 	},
 ];
 

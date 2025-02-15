@@ -8,14 +8,23 @@ import Link from "next/link";
 export default function HeroSection() {
 	return (
 		<section className="min-h-screen flex items-center justify-center bg-gradient-to-r from-primary to-secondary">
-			<div className="text-center text-white px-4 max-w-3xl flex flex-col gap-2">
-				<h1 className="text-5xl md:text-7xl font-bold mb-4 motion-preset-compress">
-					Bienvenue chez Melios
-				</h1>
-				<p className="text-xl md:text-2xl mb-8 motion-preset-focus motion-delay-300 text-default-200">
+			<div className=" text-white px-4 w-1/2 flex flex-col gap-y-6">
+				<div className="motion-preset-compress flex flex-col">
+					<h1 className="text-5xl md:text-6xl font-bold text-center">
+						Commencez votre aventure avec
+						<span
+							className="from-primary to-primaryLight text-[clamp(1rem,10vw,2rem)] 
+							sm:text-[clamp(1rem,10vw,3rem)] font-bold text-center
+							text-5xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-b ml-2"
+						>
+							Melios
+						</span>
+					</h1>
+				</div>
+				<p className="text-lg text-center md:text-xl mb-8 motion-preset-focus motion-delay-300 text-default-100">
 					La nouvelle façon de gérer votre quotidien avec simplicité et efficacité.
 				</p>
-				<div className="flex justify-center gap-4">
+				<div className="flex justify-center gap-6 mt-12">
 					<Button
 						variant="solid"
 						color="primary"

@@ -73,7 +73,7 @@ export default function Footer() {
 								<Link
 									href="https://www.linkedin.com/in/melios-the-app/"
 									target="_blank"
-									className="hover:text-gray-300"
+									className="hover:text-gray-300 text-default-100"
 									aria-label="LinkedIn"
 								>
 									<Icon icon="akar-icons:linkedin-fill" className="w-6 h-6" />
@@ -83,7 +83,7 @@ export default function Footer() {
 								<Link
 									href="https://www.tiktok.com/@melios_app"
 									target="_blank"
-									className="hover:text-gray-300"
+									className="hover:text-gray-300 text-default-100"
 									aria-label="Tiktok"
 								>
 									<Icon icon="akar-icons:tiktok-fill" className="w-6 h-6" />
@@ -92,7 +92,7 @@ export default function Footer() {
 							<li>
 								<Link
 									href="https://instagram.com/melios_app"
-									className="hover:text-gray-300"
+									className="hover:text-gray-300 text-default-100"
 									aria-label="Instagram"
 									target="_blank"
 								>
