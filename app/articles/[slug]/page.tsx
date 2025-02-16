@@ -7,6 +7,7 @@ import { PostHeader } from "@/components/blog/PostHeader";
 import RelatedPosts from "@/components/blog/RelatedPosts";
 import ShareArticle from "@/components/blog/ShareArticle";
 import Breadcrumb from "@/components/blog/Breadcrumb";
+import DownloadButtons from "@/components/blog/DownloadButtons";
 
 export default async function Post(props: Params) {
 	const params = await props.params;
@@ -39,6 +40,7 @@ export default async function Post(props: Params) {
 						imageCredit={post.imageCredit}
 					/>
 					<PostBody content={content} />
+					<DownloadButtons />
 					<ShareArticle
 						title={post.title}
 						url={`https://melios.me/articles/${post.slug}`}
