@@ -2,10 +2,25 @@
 import { Link } from "@heroui/react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Footer() {
+	const pathname = usePathname();
+	const router = useRouter();
+
+	const handleLinkClick = (href: string) => {
+		if (pathname !== "/") {
+			router.push("/");
+			setTimeout(() => {
+				router.push(href);
+			}, 100);
+		} else {
+			router.push(href);
+		}
+	};
+
 	return (
-		<footer className="bg-slate-900 text-white">
+		<footer className="bg-default-900 text-white">
 			<div className="container mx-auto px-4 py-8">
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 					<div>
@@ -25,23 +40,48 @@ export default function Footer() {
 						<h3 className="text-xl font-bold mb-4">Liens rapides</h3>
 						<ul className="space-y-2">
 							<li>
-								<Link href="#features" className="text-default-100 text-sm">
+								<Link
+									href="#features"
+									onPress={() => handleLinkClick("#features")}
+									className="text-default-100 text-sm"
+								>
 									Fonctionnalités
 								</Link>
 							</li>
 							<li>
-								<Link href="#screenshots" className="text-default-100 text-sm">
+								<Link
+									href="#screenshots"
+									onPress={() => handleLinkClick("#screenshots")}
+									className="text-default-100 text-sm cursor-pointer"
+								>
 									Aperçu
 								</Link>
 							</li>
 							<li>
-								<Link href="#download" className="text-default-100 text-sm">
+								<Link
+									href="#download"
+									onPress={() => handleLinkClick("#download")}
+									className="text-default-100 text-sm cursor-pointer"
+								>
 									Téléchargement
 								</Link>
 							</li>
 							<li>
-								<Link href="#contact" className="text-default-100 text-sm">
+								<Link
+									href="#contact"
+									onPress={() => handleLinkClick("#contact")}
+									className="text-default-100 text-sm cursor-pointer"
+								>
 									Contact
+								</Link>
+							</li>
+							<li>
+								<Link
+									href="/articles"
+									onPress={() => handleLinkClick("/articles")}
+									className="text-default-100 text-sm cursor-pointer"
+								>
+									Articles
 								</Link>
 							</li>
 						</ul>

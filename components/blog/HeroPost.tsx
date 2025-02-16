@@ -25,18 +25,18 @@ export function HeroPost({
 	slug,
 }: Props) {
 	return (
-		<section>
+		<section className="w-2/3 bg-default-50 p-4 rounded-md">
 			<div className="mb-8 md:mb-5">
 				<CoverImage title={title} src={coverImage} slug={slug} />
 			</div>
-			<div className=" w-2/3 mb-10 md:mb-12">
+			<div className="">
 				<div>
 					<h3 className="mb-4 text-2xl lg:text-3xl font-bold leading-tight">
 						<Link href={`/articles/${slug}`} className="hover:underline">
 							{title}
 						</Link>
 					</h3>
-					<p className="text-md text-default-700 leading-relaxed text-sm mb-2">
+					<p className="text-md text-default-500 w-10/12 leading-relaxed text-sm mb-2">
 						{excerpt}
 					</p>
 

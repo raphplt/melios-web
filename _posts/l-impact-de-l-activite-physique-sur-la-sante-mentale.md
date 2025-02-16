@@ -9,6 +9,7 @@ author:
 ogImage:
  url: "/blog/covers/activite-physique-sante-mentale.jpg"
 imageCredit: "Photo by Lorenzo Fatto Offidani on Unsplash"
+tags: ["santé mentale", "bien-être", "activité physique", "développement personnel"]
 ---
 
 Dans notre société moderne, le bien-être mental est devenu une préoccupation majeure. De nombreuses études ont démontré que l'activité physique régulière joue un rôle crucial dans l'amélioration de la santé mentale. Chez **Melios**, nous croyons fermement que le sport est un pilier essentiel du développement personnel.

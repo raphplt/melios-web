@@ -9,6 +9,7 @@ author:
 ogImage:
  url: "/blog/covers/solitude-jeunes-adultes.jpg"
 imageCredit: "Photo by Lorenzo Fatto Offidani on Unsplash"
+tags: ["solitude", "jeunes adultes", "santé mentale", "bien-être", "pandémie"]
 ---
 
 La solitude est souvent perçue comme un phénomène touchant principalement les personnes âgées. Cependant, une tendance inquiétante émerge : les jeunes adultes sont de plus en plus confrontés à un sentiment profond d'isolement social. Cette réalité, déjà présente avant 2020, a été intensifiée par la pandémie de COVID-19, créant une véritable "épidémie de solitude" parmi les 18-30 ans.

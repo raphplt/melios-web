@@ -9,6 +9,7 @@ author:
 ogImage:
  url: "/blog/covers/micro-investissement-jeunes.jpg"
 imageCredit: "Photo by Austin Distel on Unsplash"
+tags: ["micro-investissement", "jeunes adultes", "épargne", "investissement", "finance"]
 ---
 
 Dans un contexte économique où l'épargne traditionnelle offre des rendements limités, les jeunes adultes français se tournent de plus en plus vers des solutions innovantes pour construire leur avenir financier. Parmi ces solutions, le **micro-investissement** émerge comme une tendance majeure, offrant la possibilité d'investir de petits montants dans divers actifs financiers.

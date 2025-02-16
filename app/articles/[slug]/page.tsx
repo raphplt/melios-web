@@ -1,9 +1,12 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getAllPosts, getPostBySlug } from "@/lib/api";
+import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/api";
 import markdownToHtml from "@/lib/markdownToHtml";
 import { PostBody } from "@/components/blog/PostBody";
 import { PostHeader } from "@/components/blog/PostHeader";
+import RelatedPosts from "@/components/blog/RelatedPosts";
+import ShareArticle from "@/components/blog/ShareArticle";
+import Breadcrumb from "@/components/blog/Breadcrumb";
 
 export default async function Post(props: Params) {
 	const params = await props.params;
@@ -15,10 +18,19 @@ export default async function Post(props: Params) {
 
 	const content = await markdownToHtml(post.content || "");
 
+	const relatedPosts = getRelatedPosts(post);
+
+	const breadcrumbItems = [
+		{ label: "Accueil", href: "/" },
+		{ label: "Articles", href: "/articles" },
+		{ label: post.title, href: `/articles/${post.slug}` },
+	];
+
 	return (
 		<main>
 			<div className="container mx-auto px-5">
-				<article className="mb-32 mt-20">
+				<article className="mb-32 mt-20 bg-slate-50 w-2/3 mx-auto p-8 rounded-md">
+					<Breadcrumb items={breadcrumbItems} />
 					<PostHeader
 						title={post.title}
 						coverImage={post.coverImage}
@@ -27,8 +39,13 @@ export default async function Post(props: Params) {
 						imageCredit={post.imageCredit}
 					/>
 					<PostBody content={content} />
+					<ShareArticle
+						title={post.title}
+						url={`https://melios.me/articles/${post.slug}`}
+					/>
 				</article>
 			</div>
+			<RelatedPosts posts={relatedPosts} />
 		</main>
 	);
 }

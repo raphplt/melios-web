@@ -9,6 +9,7 @@ author:
 ogImage:
  url: "/blog/covers/gamification-cover.jpg"
 imageCredit: "Photo by Erik Mclean on Unsplash"
+tags: ["développement personnel", "gamification", "habitudes", "motivation"]
 ---
 
 Le développement personnel est souvent perçu comme une tâche ardue et difficile à maintenir sur le long terme. Pourtant, avec les bonnes méthodes, il est possible de transformer cette expérience en une aventure captivante et enrichissante. C’est là qu’intervient la **gamification**, un concept qui utilise des éléments issus des jeux vidéo pour rendre l’apprentissage et l’acquisition de nouvelles habitudes plus motivants.

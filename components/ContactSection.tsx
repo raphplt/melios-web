@@ -71,7 +71,7 @@ export default function ContactSection() {
 
 	return (
 		<section
-			className="min-h-[50vh] flex items-center py-16 bg-background"
+			className="min-h-[50vh] flex items-center py-16 lg:py-24 bg-background"
 			id="contact"
 		>
 			<div className="container mx-auto px-4">

@@ -12,19 +12,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			url: "https://www.melios.me/privacy",
 			lastModified: new Date(),
 			changeFrequency: "monthly",
-			priority: 0.5,
+			priority: 0.2,
 		},
 		{
 			url: "https://www.melios.me/cookies",
 			lastModified: new Date(),
 			changeFrequency: "monthly",
-			priority: 0.5,
+			priority: 0.2,
 		},
 		{
 			url: "https://www.melios.me/terms",
 			lastModified: new Date(),
 			changeFrequency: "monthly",
-			priority: 0.5,
+			priority: 0.2,
+		},
+		{
+			url: "https://www.melios.me/articles",
+			lastModified: new Date(),
+			changeFrequency: "daily",
+			priority: 0.8,
 		},
 	];
 }

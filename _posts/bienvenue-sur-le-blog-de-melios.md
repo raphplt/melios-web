@@ -2,13 +2,14 @@
 title: "Bienvenue sur le Blog de Melios : Gamifiez Votre Vie"
 excerpt: "Découvrez Melios, l'application qui révolutionne le développement personnel en intégrant la gamification pour rendre chaque habitude plus motivante et engageante."
 coverImage: "/blog/covers/welcome-cover.jpg"
-date: "2025-02-15T10:00:00.000Z"
+date: "2025-02-14T10:00:00.000Z"
 author:
  name: "Équipe Melios"
  picture: "/blog/authors/melios-team.png"
 ogImage:
  url: "/blog/covers/welcome-cover.jpg"
 imageCredit: "Photo by Melios"
+tags: ["bienvenue", "développement personnel", "gamification"]
 ---
 
 Bienvenue sur le blog officiel de **Melios**, la plateforme qui transforme votre développement personnel en une aventure ludique et motivante !

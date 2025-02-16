@@ -1,12 +1,27 @@
 "use client";
 import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Header() {
 	const [menuOpen, setMenuOpen] = useState(false);
+	const pathname = usePathname();
+	const router = useRouter();
 
 	const toggleMenu = () => setMenuOpen(!menuOpen);
+
+	const handleLinkClick = (href: string) => {
+		if (pathname !== "/") {
+			router.push("/");
+			setTimeout(() => {
+				router.push(href);
+			}, 100);
+		} else {
+			router.push(href);
+		}
+		setMenuOpen(false);
+	};
 
 	return (
 		<header className="bg-white/30 backdrop-blur-lg border border-white/20 text-default-900 shadow fixed top-0 left-0 right-0 z-50">
@@ -19,33 +34,44 @@ export default function Header() {
 				<nav className="hidden md:block">
 					<ul className="flex space-x-8 text-sm">
 						<li>
-							<Link href="#features" className="hover:text-blue-600">
+							<a
+								onClick={() => handleLinkClick("#features")}
+								className="hover:text-blue-600 cursor-pointer"
+							>
 								Fonctionnalités
-							</Link>
+							</a>
 						</li>
 						<li>
-							<Link href="#screenshots" className="hover:text-blue-600">
+							<a
+								onClick={() => handleLinkClick("#screenshots")}
+								className="hover:text-blue-600 cursor-pointer"
+							>
 								Aperçu
-							</Link>
+							</a>
 						</li>
 						<li>
-							<Link href="#download" className="hover:text-blue-600">
+							<a
+								onClick={() => handleLinkClick("#download")}
+								className="hover:text-blue-600 cursor-pointer"
+							>
 								Téléchargement
-							</Link>
+							</a>
 						</li>
 						<li>
-							<Link href="#contact" className="hover:text-blue-600">
+							<a
+								onClick={() => handleLinkClick("#contact")}
+								className="hover:text-blue-600 cursor-pointer"
+							>
 								Contact
-							</Link>
+							</a>
 						</li>
 						<li>
-							<Link
-								href="/articles"
-								onClick={() => setMenuOpen(false)}
-								className="hover:text-blue-600"
+							<a
+								onClick={() => handleLinkClick("/articles")}
+								className="hover:text-blue-600 cursor-pointer"
 							>
 								Articles
-							</Link>
+							</a>
 						</li>
 					</ul>
 				</nav>
@@ -97,49 +123,44 @@ export default function Header() {
 				<nav className="md:hidden bg-white shadow">
 					<ul className="flex flex-col space-y-2 px-4 py-2">
 						<li>
-							<Link
-								href="#features"
-								onClick={() => setMenuOpen(false)}
-								className="block py-2 hover:text-blue-600"
+							<a
+								onClick={() => handleLinkClick("#features")}
+								className="block py-2 hover:text-blue-600 cursor-pointer"
 							>
 								Fonctionnalités
-							</Link>
+							</a>
 						</li>
 						<li>
-							<Link
-								href="#screenshots"
-								onClick={() => setMenuOpen(false)}
-								className="block py-2 hover:text-blue-600"
+							<a
+								onClick={() => handleLinkClick("#screenshots")}
+								className="block py-2 hover:text-blue-600 cursor-pointer"
 							>
 								Aperçu
-							</Link>
+							</a>
 						</li>
 						<li>
-							<Link
-								href="#download"
-								onClick={() => setMenuOpen(false)}
-								className="block py-2 hover:text-blue-600"
+							<a
+								onClick={() => handleLinkClick("#download")}
+								className="block py-2 hover:text-blue-600 cursor-pointer"
 							>
 								Téléchargement
-							</Link>
+							</a>
 						</li>
 						<li>
-							<Link
-								href="#contact"
-								onClick={() => setMenuOpen(false)}
-								className="block py-2 hover:text-blue-600"
+							<a
+								onClick={() => handleLinkClick("#contact")}
+								className="block py-2 hover:text-blue-600 cursor-pointer"
 							>
 								Contact
-							</Link>
+							</a>
 						</li>
 						<li>
-							<Link
-								href="/articles"
-								onClick={() => setMenuOpen(false)}
-								className="block py-2 hover:text-blue-600"
+							<a
+								onClick={() => handleLinkClick("/articles")}
+								className="block py-2 hover:text-blue-600 cursor-pointer"
 							>
 								Articles
-							</Link>
+							</a>
 						</li>
 					</ul>
 				</nav>
