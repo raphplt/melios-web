@@ -14,6 +14,7 @@ export default function DownloadSection() {
 			opacity-0 transition-opacity intersect-full intersect:opacity-100 intersect-once duration-400
 			intersect:motion-preset-shrink motion-delay-100
 			"
+				aria-label="Téléchargez Melios"
 			>
 				Téléchargez Melios
 			</h2>
@@ -22,6 +23,7 @@ export default function DownloadSection() {
 			opacity-0 transition-opacity intersect-full intersect:opacity-100 intersect-once duration-400
 			intersect:motion-preset-shrink
 			"
+				aria-label="Transformez votre quotidien avec Melios ! Disponible sur iOS et Android."
 			>
 				Transformez votre quotidien avec Melios ! Disponible sur iOS et Android.
 			</p>
@@ -32,6 +34,7 @@ export default function DownloadSection() {
 					href="https://apps.apple.com/fr/app/melios/id6664069292?platform=iphone"
 					variant="solid"
 					color="primary"
+					aria-label="Télécharger sur l'App Store"
 					className="
 					opacity-0 transition-opacity intersect-full intersect:opacity-100 intersect-once duration-400
 					intersect:motion-scale-in-[0.5] intersect:motion-translate-x-in-[-28%] 
@@ -48,6 +51,7 @@ export default function DownloadSection() {
 					href="https://play.google.com/store/apps/details?id=com.raphplt.melios&pcampaignid=web_share"
 					variant="faded"
 					color="primary"
+					aria-label="Disponible sur Google Play"
 					className="
 					opacity-0 transition-opacity intersect-full intersect:opacity-100 intersect-once duration-400
 					intersect:motion-scale-in-[0.5] intersect:motion-translate-x-in-[-28%] 
@@ -69,6 +73,7 @@ export default function DownloadSection() {
 					opacity-0 transition-opacity intersect-half 
 					intersect:motion-preset-shrink intersect:opacity-100 intersect-once duration-400
 					"
+					aria-label="Aperçu de l'application Melios"
 				/>
 			</div>
 		</section>

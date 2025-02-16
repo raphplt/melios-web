@@ -20,16 +20,10 @@ export function PostHeader({
 }: Props) {
 	return (
 		<>
-			{/* <Link
-				href="/articles"
-				className="border-2 border-primary hover:border-primaryLight transition-all 
-				duration-200 text-primary font-semibold py-2 px-4 rounded-lg mb-5 text-sm"
-			>
-				Retour
-			</Link> */}
 			<h1
 				className="text-xl md:text-2xl lg:text-3xl font-bold tracking-tighter leading-tight 
-			md:leading-none mb-4 mt-2 text-center md:text-left"
+			md:leading-none mb-4 mt-2 text-left"
+				aria-label={title}
 			>
 				{title}
 			</h1>

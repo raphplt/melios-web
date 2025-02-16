@@ -7,12 +7,15 @@ type BreadcrumbProps = {
 export default function Breadcrumb({ items }: BreadcrumbProps) {
 	return (
 		<nav aria-label="breadcrumb">
-			<ol className="flex space-x-2 text-xs text-default-500 py-2">
+			<ol className="flex space-x-2 items-start text-xs text-default-500 py-2">
 				{items.map((item, index) => (
 					<li key={index} className="flex items-center">
 						{index > 0 && <span className="mx-1">•</span>}
 						<Link href={item.href} className="hover:underline">
-							{item.label}
+							<span className="block sm:hidden">
+								{item.label.length > 25 ? `${item.label.slice(0, 25)}...` : item.label}
+							</span>
+							<span className="hidden sm:block">{item.label}</span>
 						</Link>
 					</li>
 				))}

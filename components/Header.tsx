@@ -26,52 +26,66 @@ export default function Header() {
 	return (
 		<header className="bg-white/30 backdrop-blur-lg border border-white/20 text-default-900 shadow fixed top-0 left-0 right-0 z-50">
 			<div className="container mx-auto px-4 flex items-center justify-between h-14">
-				<Link href="/" className="flex items-center space-x-4 cursor-pointer">
+				<Link
+					href="/"
+					className="flex items-center space-x-4 cursor-pointer"
+					aria-label="Accueil"
+				>
 					<Image src="/images/Logo_Melios.png" alt="Melios" width={40} height={40} />
 					<div className="text-xl font-bold">Melios</div>
 				</Link>
 
-				<nav className="hidden md:block">
+				<nav className="hidden md:block" aria-label="Navigation principale">
 					<ul className="flex space-x-8 text-sm">
 						<li>
-							<a
+							<Link
+								href="#features"
 								onClick={() => handleLinkClick("#features")}
 								className="hover:text-blue-600 cursor-pointer"
+								aria-label="Fonctionnalités"
 							>
 								Fonctionnalités
-							</a>
+							</Link>
 						</li>
 						<li>
-							<a
+							<Link
+								href="#screenshots"
 								onClick={() => handleLinkClick("#screenshots")}
 								className="hover:text-blue-600 cursor-pointer"
+								aria-label="Aperçu"
 							>
 								Aperçu
-							</a>
+							</Link>
 						</li>
 						<li>
-							<a
+							<Link
+								href="#download"
 								onClick={() => handleLinkClick("#download")}
 								className="hover:text-blue-600 cursor-pointer"
+								aria-label="Téléchargement"
 							>
 								Téléchargement
-							</a>
+							</Link>
 						</li>
 						<li>
-							<a
+							<Link
+								href="#contact"
 								onClick={() => handleLinkClick("#contact")}
 								className="hover:text-blue-600 cursor-pointer"
+								aria-label="Contact"
 							>
 								Contact
-							</a>
+							</Link>
 						</li>
 						<li>
-							<a
+							<Link
+								href="/articles"
 								onClick={() => handleLinkClick("/articles")}
 								className="hover:text-blue-600 cursor-pointer"
+								aria-label="Articles"
 							>
 								Articles
-							</a>
+							</Link>
 						</li>
 					</ul>
 				</nav>
@@ -82,6 +96,7 @@ export default function Header() {
 						onClick={toggleMenu}
 						className="focus:outline-none"
 						aria-label="Menu"
+						aria-expanded={menuOpen}
 					>
 						{menuOpen ? (
 							<svg
@@ -120,47 +135,57 @@ export default function Header() {
 
 			{/* Menu mobile */}
 			{menuOpen && (
-				<nav className="md:hidden bg-white shadow">
+				<nav className="md:hidden bg-white shadow" aria-label="Navigation mobile">
 					<ul className="flex flex-col space-y-2 px-4 py-2">
 						<li>
-							<a
+							<Link
+								href="#features"
 								onClick={() => handleLinkClick("#features")}
 								className="block py-2 hover:text-blue-600 cursor-pointer"
+								aria-label="Fonctionnalités"
 							>
 								Fonctionnalités
-							</a>
+							</Link>
 						</li>
 						<li>
-							<a
+							<Link
+								href="#screenshots"
 								onClick={() => handleLinkClick("#screenshots")}
 								className="block py-2 hover:text-blue-600 cursor-pointer"
+								aria-label="Aperçu"
 							>
 								Aperçu
-							</a>
+							</Link>
 						</li>
 						<li>
-							<a
+							<Link
+								href="#download"
 								onClick={() => handleLinkClick("#download")}
 								className="block py-2 hover:text-blue-600 cursor-pointer"
+								aria-label="Téléchargement"
 							>
 								Téléchargement
-							</a>
+							</Link>
 						</li>
 						<li>
-							<a
+							<Link
+								href="#contact"
 								onClick={() => handleLinkClick("#contact")}
 								className="block py-2 hover:text-blue-600 cursor-pointer"
+								aria-label="Contact"
 							>
 								Contact
-							</a>
+							</Link>
 						</li>
 						<li>
-							<a
+							<Link
+								href="/articles"
 								onClick={() => handleLinkClick("/articles")}
 								className="block py-2 hover:text-blue-600 cursor-pointer"
+								aria-label="Articles"
 							>
 								Articles
-							</a>
+							</Link>
 						</li>
 					</ul>
 				</nav>

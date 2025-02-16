@@ -38,6 +38,7 @@ export default function ScreenshotsSection() {
 				className="text-4xl font-bold text-center text-text mb-12
 				opacity-0 transition-opacity intersect-full intersect:opacity-100 intersect-once 
 				intersect:motion-preset-blur-right"
+				aria-label="Aperçu de l'application"
 			>
 				Aperçu de l&apos;application
 			</h2>
@@ -55,10 +56,16 @@ export default function ScreenshotsSection() {
 							intersect:motion-preset-confetti motion-duration-300
 						"
 						>
-							<h3 className="text-2xl font-semibold mb-2 text-default-900">
+							<h3
+								className="text-2xl font-semibold mb-2 text-default-900"
+								arial-label={screen.title}
+							>
 								{screen.title}
 							</h3>
-							<p className="text-default-700 w-full md:w-2/3 mx-auto md:mx-0">
+							<p
+								className="text-default-700 w-full md:w-2/3 mx-auto md:mx-0"
+								arial-label={screen.description}
+							>
 								{screen.description}
 							</p>
 						</div>
@@ -78,7 +85,8 @@ export default function ScreenshotsSection() {
 								alt={screen.alt}
 								width={256}
 								height={512}
-								className=" mx-auto"
+								className="mx-auto"
+								aria-label={screen.title + " screenshot"}
 							/>
 						</div>
 					</div>

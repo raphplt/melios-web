@@ -28,8 +28,8 @@ export default async function Post(props: Params) {
 
 	return (
 		<main>
-			<div className="container mx-auto px-5">
-				<article className="mb-32 mt-20 bg-slate-50 w-2/3 mx-auto p-8 rounded-md">
+			<div className="container mx-auto lg:px-5">
+				<article className="lg:mb-20 mb-10 mt-10 lg:mt-20 lg:bg-slate-50 lg:w-2/3 w-full mx-auto p-8 rounded-md">
 					<Breadcrumb items={breadcrumbItems} />
 					<PostHeader
 						title={post.title}

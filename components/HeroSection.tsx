@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Button, Popover, PopoverContent, PopoverTrigger } from "@heroui/react";
 import Arrow from "./icons/Arrow";
 import Download from "./icons/Download";
@@ -6,51 +5,27 @@ import Apple from "./icons/Apple";
 import Android from "./icons/Android";
 import Link from "next/link";
 
-function AnimatedBackground() {
-	const [pos, setPos] = useState({ x: 0, y: 0 });
-
-	useEffect(() => {
-		setPos({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
-		const handleMouseMove = (e: MouseEvent): void => {
-			setPos({ x: e.clientX, y: e.clientY });
-			console.log(`Mouse position: x=${e.clientX}, y=${e.clientY}`);
-		};
-		window.addEventListener("mousemove", handleMouseMove);
-		return () => window.removeEventListener("mousemove", handleMouseMove);
-	}, []);
-
-	return (
-		<>
-			{/* Fond animé en dégradé */}
-			<div className="absolute inset-0 z-[-2] animate-gradient" />
-
-			{/* Effet radial qui suit le curseur */}
-			<div
-				className="absolute inset-0 z-[-1]"
-				style={{
-					backgroundImage: `radial-gradient(circle at ${pos.x}px ${pos.y}px, rgba(255,255,255,0.1), transparent 70%)`,
-					transition: "background 0.1s ease-out",
-				}}
-			/>
-		</>
-	);
-}
-
 export default function HeroSection() {
 	return (
 		<section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-			<AnimatedBackground />
+			<div className="absolute inset-0 z-[-2] animate-gradient" />
 
 			<div className="relative z-10 text-white w-full sm:w-3/4 lg:w-1/2 flex flex-col gap-y-6 px-4 sm:px-6 lg:px-8">
 				<div className="motion-preset-compress flex flex-col">
-					<h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center">
+					<h1
+						className="text-4xl sm:text-5xl md:text-6xl font-bold text-center"
+						aria-label="Commencez votre aventure avec Melios"
+					>
 						Commencez votre aventure avec
 						<span className="ml-2 text-4xl sm:text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-primary to-primaryLight">
 							Melios
 						</span>
 					</h1>
 				</div>
-				<p className="text-base sm:text-lg md:text-xl text-center mb-8 motion-preset-focus motion-delay-300 text-default-100">
+				<p
+					className="text-base sm:text-lg md:text-xl text-center mb-8 motion-preset-focus motion-delay-300 text-default-100"
+					aria-label="La nouvelle façon de gérer votre quotidien avec simplicité et efficacité."
+				>
 					La nouvelle façon de gérer votre quotidien avec simplicité et efficacité.
 				</p>
 				<div className="flex flex-col sm:flex-row justify-center gap-6 mt-12">
@@ -64,6 +39,7 @@ export default function HeroSection() {
               motion-opacity-in-[0%] motion-rotate-in-[-10deg] motion-blur-in-[5px] 
               motion-duration-[0.35s] motion-duration-[0.53s]/scale motion-duration-[0.53s]/translate 
               motion-duration-[0.63s]/rotate motion-delay-300"
+						aria-label="Découvrir l'application"
 					>
 						Découvrir l&apos;application
 					</Button>
@@ -77,16 +53,25 @@ export default function HeroSection() {
                   motion-opacity-in-[0%] motion-rotate-in-[-10deg] motion-blur-in-[5px] 
                   motion-duration-[0.35s] motion-duration-[0.53s]/scale motion-duration-[0.53s]/translate 
                   motion-duration-[0.63s]/rotate motion-delay-400"
+								aria-label="Télécharger"
 							>
 								Télécharger
 							</Button>
 						</PopoverTrigger>
 						<PopoverContent>
 							<div className="p-4">
-								<p className="text-lg text-primary font-bold mb-2">
+								<p
+									className="text-lg text-primary font-bold mb-2"
+									aria-label="Téléchargez l'application"
+								>
 									Téléchargez l&apos;application
 								</p>
-								<p className="text-sm text-gray-600">Disponible sur Android et iOS</p>
+								<p
+									className="text-sm text-gray-600"
+									aria-label="Disponible sur Android et iOS"
+								>
+									Disponible sur Android et iOS
+								</p>
 								<div className="flex justify-center mt-4 gap-4">
 									<Button
 										variant="solid"
@@ -95,6 +80,7 @@ export default function HeroSection() {
 										href="https://play.google.com/store/apps/details?id=com.raphplt.melios&pcampaignid=web_share"
 										as={Link}
 										target="_blank"
+										arial-label="Télécharger sur Android"
 									>
 										Android
 									</Button>
@@ -105,6 +91,7 @@ export default function HeroSection() {
 										href="https://apps.apple.com/fr/app/melios/id6664069292?platform=iphone"
 										as={Link}
 										target="_blank"
+										arial-label="Télécharger sur iOS"
 									>
 										iOS
 									</Button>

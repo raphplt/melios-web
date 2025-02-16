@@ -49,8 +49,8 @@ export default function FeaturesSection() {
 				<h2
 					className="text-4xl font-bold text-center text-text mb-12
 				opacity-0 transition-opacity intersect-full intersect:opacity-100 intersect-once 
-				intersect:motion-preset-blur-right
-				"
+				intersect:motion-preset-blur-right"
+					aria-label="Fonctionnalités clés de Melios"
 				>
 					Fonctionnalités clés de Melios
 				</h2>
@@ -59,6 +59,8 @@ export default function FeaturesSection() {
 				opacity-0 transition-opacity intersect-full intersect:opacity-100 intersect-once 
 				intersect:motion-preset-focus motion-delay-200 intersect:motion-delay-20
 				"
+					arial-label="Découvrez comment Melios vous aide à transformer vos habitudes et booster	
+					votre développement personnel grâce à des fonctionnalités uniques."
 				>
 					Découvrez comment Melios vous aide à transformer vos habitudes et booster
 					votre développement personnel grâce à des fonctionnalités uniques.
@@ -102,8 +104,12 @@ function FeatureCard({
 		>
 			<CardBody>
 				<div className="text-6xl mb-4">{icon}</div>
-				<h3 className="text-2xl font-bold text-text mb-2">{title}</h3>
-				<p className="text-textTertiary">{description}</p>
+				<h3 className="text-2xl font-bold text-text mb-2" aria-label={title}>
+					{title}
+				</h3>
+				<p className="text-textTertiary" aria-label={description}>
+					{description}
+				</p>
 			</CardBody>
 		</Card>
 	);
