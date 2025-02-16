@@ -67,7 +67,7 @@ export default function DownloadSection() {
 					height={500}
 					className="object-cover bg-default-50 rounded-2xl shadow-xl w-10/12
 					opacity-0 transition-opacity intersect-half 
-					intersect:motion-preset-slide-right intersect:opacity-100 intersect-once duration-400
+					intersect:motion-preset-shrink intersect:opacity-100 intersect-once duration-400
 					"
 				/>
 			</div>
