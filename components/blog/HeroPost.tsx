@@ -1,11 +1,8 @@
-// import Avatar from "@/app/_components/avatar";
-// import CoverImage from "@/app/_components/cover-image";
 import { type Author } from "@/interfaces/author";
 import Link from "next/link";
 import CoverImage from "./CoverImage";
 import DateFormatter from "./DateFormatter";
 import Avatar from "./Avatar";
-// import DateFormatter from "./date-formatter";
 
 type Props = {
 	title: string;
@@ -25,7 +22,7 @@ export function HeroPost({
 	slug,
 }: Props) {
 	return (
-		<section className="w-2/3 bg-default-50 p-4 rounded-md">
+		<section className="sm:w-2/3 bg-default-50 p-4 rounded-md">
 			<div className="mb-8 md:mb-5">
 				<CoverImage title={title} src={coverImage} slug={slug} />
 			</div>
