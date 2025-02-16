@@ -5,6 +5,13 @@ const HeadSection = () => {
 	return (
 		<Head>
 			<title>Melios - Application Mobile</title>
+			<script
+				id="Cookiebot"
+				src="https://consent.cookiebot.com/uc.js"
+				data-cbid="5e0518db-57a4-4da8-81c1-22a92b2d0d47"
+				type="text/javascript"
+				async
+			></script>
 			<meta
 				name="description"
 				content="Découvrez Melios, l'application mobile qui révolutionne votre quotidien."
