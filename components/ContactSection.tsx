@@ -19,7 +19,6 @@ interface ContactForm {
 	type: string;
 }
 
-// Définir le schéma de validation avec zod
 const schema = z.object({
 	name: z.string().nonempty("Le nom est requis"),
 	email: z.string().email("L'email n'est pas valide"),
@@ -89,7 +88,7 @@ export default function ContactSection() {
 					contacter.
 				</p>
 				<Form
-					className="max-w-lg mx-auto w-1/2 space-y-2"
+					className="max-w-lg mx-auto w-11/12 lg:w-1/2 space-y-2"
 					onSubmit={handleSubmit(onSubmit)}
 				>
 					<Controller
