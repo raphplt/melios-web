@@ -30,12 +30,12 @@ const HeadSection = () => {
 					name="twitter:image"
 					content="https://www.melios.com/twitter-image.jpg"
 				/>
-				<script
-					async
-					src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8322235778805536"
-					crossOrigin="anonymous"
-				></script>
 			</Head>
+			<Script
+				async
+				src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8322235778805536"
+				crossOrigin="anonymous"
+			></Script>
 			<Script
 				id="iubenda-configuration"
 				type="text/javascript"
