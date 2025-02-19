@@ -1,0 +1,60 @@
+import { type Author } from "@/interfaces/author";
+import Link from "next/link";
+import DateFormatter from "./DateFormatter";
+import Avatar from "./Avatar";
+
+type Props = {
+	title: string;
+	coverImage: string;
+	date: string;
+	excerpt: string;
+	author: Author;
+	slug: string;
+};
+
+export function PostPreviewCompact({
+	title,
+	coverImage,
+	date,
+	excerpt,
+	author,
+	slug,
+}: Props) {
+	return (
+		<Link href={`/articles/${slug}`}>
+			<div className="group max-w-2xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl">
+				<div className="w-full h-48 overflow-hidden">
+					<img
+						src={coverImage}
+						alt={`Image de couverture pour ${title}`}
+						className="w-full h-full object-cover"
+					/>
+				</div>
+
+				<div className="p-3 ">
+					<h3 className="text-lg font-semibold text-gray-900 group-hover:underline line-clamp-2">
+						{title}
+					</h3>
+
+					<div className="text-default-600 text-xs mt-1">
+						<DateFormatter dateString={date} />
+					</div>
+
+					<p className="mt-2 text-default-500 leading-relaxed text-xs line-clamp-2">
+						{excerpt}
+					</p>
+
+					<div className="mt-2 flex items-center justify-between">
+						<div className="flex items-center">
+							<Avatar name={author.name} picture={author.picture} />
+						</div>
+
+						<div className="text-primary hover:text-primaryLight transition-all duration-200 font-medium text-sm">
+							Lire l&apos;article →
+						</div>
+					</div>
+				</div>
+			</div>
+		</Link>
+	);
+}

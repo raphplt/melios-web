@@ -14,4 +14,5 @@ export type Post = {
 	preview?: boolean;
 	imageCredit?: string;
 	tags: string[];
+	pinned?: boolean;
 };

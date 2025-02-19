@@ -139,6 +139,16 @@ export default function Footer() {
 									<Icon icon="akar-icons:instagram-fill" className="w-6 h-6" />
 								</Link>
 							</li>
+							<li>
+								<Link
+									href="https://github.com/raphplt/melios"
+									className="hover:text-gray-300 text-default-100"
+									aria-label="Github"
+									target="_blank"
+								>
+									<Icon icon="akar-icons:github-fill" className="w-6 h-6" />
+								</Link>
+							</li>
 						</ul>
 					</div>
 				</div>
