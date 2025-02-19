@@ -56,9 +56,9 @@ export default function Index() {
 	return (
 		<main>
 			<div className="container mx-auto px-5 mt-20">
-				<div className="grid grid-cols-3 gap-6 items-start">
+				<div className="grid lg:grid-cols-3 gap-6 items-start">
 					{heroPost && (
-						<div className="col-span-2">
+						<div className="lg:col-span-2">
 							<HeroPost
 								title={heroPost.title}
 								coverImage={heroPost.coverImage}
@@ -69,7 +69,7 @@ export default function Index() {
 							/>
 						</div>
 					)}
-					<div className="col-span-1 flex flex-col gap-4">
+					<div className="lg:col-span-1 flex flex-col gap-4">
 						{pinnedPosts.map((post) => (
 							<div key={post.slug} className=" w-full h-1/3">
 								<PostPreviewCompact
