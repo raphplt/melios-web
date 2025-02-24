@@ -24,23 +24,23 @@ Adopter un mode de vie plus respectueux de la planète ne se limite pas à rédu
 
 La surconsommation entraîne un stress constant : choix infinis, publicité omniprésente, besoin de suivre les tendances… À l’inverse, **réduire ses possessions** et privilégier la qualité à la quantité permet d’alléger son esprit.
 
-🔹 **Pratique recommandée :** Le minimalisme, qui favorise un environnement ordonné et apaise l’esprit. Études à l’appui, la psychologie environnementale montre que **un espace épuré diminue l’anxiété et améliore la concentration**.
+ **Pratique recommandée :** Le minimalisme, qui favorise un environnement ordonné et apaise l’esprit. Études à l’appui, la psychologie environnementale montre que **un espace épuré diminue l’anxiété et améliore la concentration**.
 
 ### 🍽 2. **Alimentation Responsable et Vitalité**
 
 Ce que nous consommons influence notre santé et celle de la planète. Une alimentation plus végétale et locale réduit l’impact carbone tout en apportant des **nutriments essentiels pour l’énergie et la clarté mentale**.
 
-🔹 **Pratique recommandée :** Tester une alimentation plus végétale une journée par semaine, ou privilégier les circuits courts.
+ **Pratique recommandée :** Tester une alimentation plus végétale une journée par semaine, ou privilégier les circuits courts.
 
-🔹 **Bénéfice personnel :** Une meilleure digestion, un regain d’énergie et une connexion plus forte avec les saisons et les cycles naturels.
+ **Bénéfice personnel :** Une meilleure digestion, un regain d’énergie et une connexion plus forte avec les saisons et les cycles naturels.
 
 ### 🌍 3. **Se Connecter à la Nature pour Mieux Se Comprendre**
 
 Passer du temps en pleine nature a des effets prouvés sur la réduction du stress et l’augmentation de la créativité. Selon une étude publiée dans **Frontiers in Psychology**, une simple promenade en forêt réduit la production de cortisol (l’hormone du stress) de **16%** en moyenne.
 
-🔹 **Pratique recommandée :** Intégrer des moments en extérieur chaque jour, même pour 15 minutes.
+ **Pratique recommandée :** Intégrer des moments en extérieur chaque jour, même pour 15 minutes.
 
-🔹 **Bénéfice personnel :** Une meilleure régulation émotionnelle et une diminution des pensées négatives.
+ **Bénéfice personnel :** Une meilleure régulation émotionnelle et une diminution des pensées négatives.
 
 ## Comment Transformer son Quotidien en Alliant Écologie et Développement Personnel ?
 
@@ -48,30 +48,30 @@ Passer du temps en pleine nature a des effets prouvés sur la réduction du stre
 
 L’un des secrets de la **motivation durable** est d’ancrer ses actions dans des valeurs profondes. Lorsqu’une habitude écologique est associée à une **identité personnelle**, elle devient naturelle et gratifiante.
 
-📌 **Exemple :** Au lieu de se forcer à éviter les emballages plastiques, on peut se définir comme une "personne qui privilégie les solutions durables". Cette approche facilite la constance et le sentiment d’accomplissement.
+ **Exemple :** Au lieu de se forcer à éviter les emballages plastiques, on peut se définir comme une "personne qui privilégie les solutions durables". Cette approche facilite la constance et le sentiment d’accomplissement.
 
 ### 📊 2. **Utiliser la Gamification et le Suivi des Progrès**
 
 Les petites victoires motivent à poursuivre nos efforts. **Melios**, avec son approche gamifiée, permet de suivre ses actions positives et d’y associer un sentiment de progression.
 
-🔹 **Pratique recommandée :** Se fixer des mini-objectifs écoresponsables et les tracker (ex : une semaine sans plastique, un mois de déplacements sans voiture).
+ **Pratique recommandée :** Se fixer des mini-objectifs écoresponsables et les tracker (ex : une semaine sans plastique, un mois de déplacements sans voiture).
 
-🔹 **Bénéfice personnel :** Renforcement de la discipline et du sentiment d’accomplissement.
+ **Bénéfice personnel :** Renforcement de la discipline et du sentiment d’accomplissement.
 
 ### 🧘 3. **Pratiquer la Pleine Conscience dans sa Consommation**
 
 L’**écologie intérieure** est aussi importante que l’écologie extérieure. Être conscient de ses actes, consommer de manière réfléchie et apprécier pleinement chaque ressource utilisée sont des moyens d’améliorer son bien-être.
 
-📌 **Exemple :** Avant un achat, prendre un moment pour se demander : "En ai-je vraiment besoin ?". Cet exercice renforce le contrôle de soi et l’alignement avec ses valeurs.
+ **Exemple :** Avant un achat, prendre un moment pour se demander : "En ai-je vraiment besoin ?". Cet exercice renforce le contrôle de soi et l’alignement avec ses valeurs.
 
 ## Melios : Un Outil pour un Mode de Vie Plus Aligné
 
 **Melios** vous accompagne dans la mise en place d’un mode de vie plus responsable et équilibré en intégrant des **habitudes positives** dans votre quotidien.
 
 🚀 **Fonctionnalités clés :**
-✅ Des défis et des récompenses pour ancrer vos nouvelles habitudes.
-✅ Un suivi pour mesurer votre progression dans votre transition écologique.
-✅ Des ressources et conseils pour vous guider pas à pas.
+- Des défis et des récompenses pour ancrer vos nouvelles habitudes.
+- Un suivi pour mesurer votre progression dans votre transition écologique.
+- Des ressources et conseils pour vous guider pas à pas.
 
 ## Conclusion : Se Développer en Prenant Soin de la Planète
 
