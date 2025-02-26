@@ -5,7 +5,7 @@ permissions:
 
 on:
   schedule:
-    - cron: "00 8 * * *"  # Déclenche tous les jours à 08:00 UTC
+    - cron: "00 8 * * *"
   workflow_dispatch:
 
 jobs:
@@ -44,11 +44,8 @@ jobs:
             exit 1
           fi
           
-          # Extraction du contenu via Python inline
-          ARTICLE_TEXT=$(echo "$RESPONSE" | python3 -c "import sys, json; data = json.load(sys.stdin); 
-          if 'choices' not in data or not data['choices']:
-              sys.exit(1)
-          print(data['choices'][0]['message']['content'])" ) || { echo 'Error: Failed to extract article text from API response'; exit 1; }
+          # Extraction du contenu via Python inline sur une seule ligne
+          ARTICLE_TEXT=$(echo "$RESPONSE" | python3 -c "import sys, json; data = json.load(sys.stdin); print(data['choices'][0]['message']['content']) if data.get('choices') else sys.exit(1)") || { echo 'Error: Failed to extract article text from API response'; exit 1; }
                         
           echo "$ARTICLE_TEXT" > article.md
           echo "::set-output name=article_text::$ARTICLE_TEXT"
