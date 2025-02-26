@@ -2,7 +2,7 @@ name: Generate Daily Post
 
 on:
   schedule:
-    - cron: "00 8 * * *"
+    - cron: "00 8 * * *"  # Déclenche tous les jours à 08:00 UTC
   workflow_dispatch:
 
 jobs:
@@ -21,7 +21,6 @@ jobs:
           PROMPT="Écris-moi un article de blog structuré et concis sur le thème de la productivité pour les jeunes adultes. Inclure des conseils pratiques, une introduction et une conclusion motivante."
 
           # Prépare la requête JSON
-          # Note : le modèle gpt-3.5-turbo s'utilise avec un param 'messages'
           REQUEST_BODY=$(cat <<EOF
           {
             "model": "gpt-3.5-turbo",
@@ -32,7 +31,7 @@ jobs:
             "temperature": 0.7
           }
           EOF
-          )
+                )
 
           # Envoie la requête à OpenAI
           RESPONSE=$(curl -s https://api.openai.com/v1/chat/completions \
@@ -40,8 +39,17 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.OPENAI_API_KEY }}" \
             -d "$REQUEST_BODY")
 
-          # Extrait le contenu (champ 'content' de l'objet 'choices[0].message')
-          ARTICLE_TEXT=$(echo "$RESPONSE" | python3 -c "import sys, json; print(json.load(sys.stdin)['choices'][0]['message']['content'])")
+          # Affiche la r²éponse brute pour le debug
+          echo "Raw OpenAI response: $RESPONSE"
+
+          # Extrait le contenu (champ 'content' de l'objet 'choices[0].message') avec gestion d'erreur
+          ARTICLE_TEXT=$(echo "$RESPONSE" | python3 -c "
+          import sys, json
+          data = json.load(sys.stdin)
+          if 'choices' not in data or not data['choices']:
+              sys.exit(1)
+          print(data['choices'][0]['message']['content'])
+          " || { echo 'Error: Failed to extract article text from API response'; exit 1; })
 
           # Sauvegarde dans un fichier temporaire
           echo "$ARTICLE_TEXT" > article.md
@@ -53,12 +61,12 @@ jobs:
       - name: Fetch image from Unsplash
         id: fetch_image
         run: |
-          # Mot clé (peut être adapté pour matcher le thème, ex: "productivity", "work", etc.)
+          # Mot clé pour la recherche d'image
           KEYWORD="productivity"
 
           RESULT=$(curl -s "https://api.unsplash.com/photos/random?query=$KEYWORD&client_id=${{ secrets.UNSPLASH_ACCESS_KEY }}")
 
-          # On tente d'extraire le champ "urls" -> "full" (ou "regular")
+          # Extraction de l'URL de l'image (ici, le format 'regular')
           IMAGE_URL=$(echo "$RESULT" | python3 -c "import sys, json; print(json.load(sys.stdin)['urls']['regular'])")
 
           # Télécharge l'image
@@ -67,7 +75,7 @@ jobs:
       # 4. Création du fichier Markdown
       - name: Create Markdown file
         run: |
-          # Prépare les variables date
+          # Prépare les variables de date
           DATE=$(date +"%Y-%m-%d")
           TIME=$(date +"%Y-%m-%dT%H:%M:%S.000Z")
           FILENAME="${DATE}-post-productivite.md"
@@ -81,11 +89,11 @@ jobs:
           COVER_IMG="/blog/covers/${DATE}-image.jpg"
           TAGS='["productivité","conseils","jeunes adultes"]'
 
-          # Création du dossier si inexistant
+          # Création des dossiers si inexistant
           mkdir -p _posts
           mkdir -p public/blog/covers
 
-          # Création du front matter
+          # Création du fichier Markdown avec le front matter
           {
             echo "---"
             echo "title: \"$TITLE\""
