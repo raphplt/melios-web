@@ -15,13 +15,15 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
+      - name: Set DATE variable
+        run: |
+          DATE=$(date +"%Y-%m-%d")
+          echo "DATE=$DATE" >> $GITHUB_ENV
+
       - name: Generate article content
         id: generate_content
         run: |
-          # Récupère le prompt depuis les secrets
           PROMPT="${{ secrets.PROMPT }}"
-          
-          # Construit le corps de la requête JSON avec jq
           REQUEST_BODY=$(jq -n --arg prompt "$PROMPT" '{
             model: "gpt-3.5-turbo",
             messages: [
@@ -38,17 +40,15 @@ jobs:
           
           echo "Raw OpenAI response: $RESPONSE"
           
-          # Vérifie que la réponse n'est pas vide
           if [ -z "$RESPONSE" ]; then
             echo "Error: Empty response from OpenAI API"
             exit 1
           fi
           
-          # Extraction du contenu via Python inline sur une seule ligne
-          ARTICLE_TEXT=$(echo "$RESPONSE" | python3 -c "import sys, json; data = json.load(sys.stdin); print(data['choices'][0]['message']['content']) if data.get('choices') else sys.exit(1)") || { echo 'Error: Failed to extract article text from API response'; exit 1; }
+          ARTICLE_TEXT=$(echo "$RESPONSE" | python3 -c "import sys, json; data = json.load(sys.stdin); print(data['choices'][0]['message']['content']) if data.get('choices') else sys.exit(1)") || { echo 'Error: Failed to extract article text'; exit 1; }
                         
           echo "$ARTICLE_TEXT" > article.md
-          echo "::set-output name=article_text::$ARTICLE_TEXT"
+          echo "article_text=$ARTICLE_TEXT" >> $GITHUB_ENV
 
       - name: Fetch image from Unsplash
         id: fetch_image
@@ -60,13 +60,11 @@ jobs:
 
       - name: Create Markdown file
         run: |
-          DATE=$(date +"%Y-%m-%d")
           TIME=$(date +"%Y-%m-%dT%H:%M:%S.000Z")
-          FILENAME="${DATE}-post-productivite.md"
-          ARTICLE_TEXT="${{ steps.generate_content.outputs.article_text }}"
+          FILENAME="${{ env.DATE }}-post-productivite.md"
           TITLE="Les Clés de la Productivité au Quotidien"
           EXCERPT="Découvrez des astuces simples pour booster votre efficacité."
-          COVER_IMG="/blog/covers/${DATE}-image.jpg"
+          COVER_IMG="/blog/covers/${{ env.DATE }}-image.jpg"
           TAGS='["productivité","conseils","jeunes adultes"]'
           mkdir -p _posts public/blog/covers
           {
@@ -84,9 +82,9 @@ jobs:
             echo "tags: $TAGS"
             echo "---"
             echo ""
-            echo "$ARTICLE_TEXT"
+            echo "${{ env.article_text }}"
           } > _posts/$FILENAME
-          mv post-image.jpg "public/blog/covers/${DATE}-image.jpg"
+          mv post-image.jpg "public/blog/covers/${{ env.DATE }}-image.jpg"
 
       - name: Commit changes
         run: |
@@ -94,4 +92,5 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add _posts/*.md public/blog/covers/*.jpg
           git commit -m "feat: add new daily post" || echo "No changes to commit"
-          git push "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/raphplt/melios-web.git" HEAD:main
+          git remote set-url origin "https://github.com/raphplt/melios-web.git"
+          git push origin HEAD:main
