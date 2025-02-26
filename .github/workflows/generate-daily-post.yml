@@ -38,18 +38,17 @@ jobs:
           
           echo "Raw OpenAI response: $RESPONSE"
           
-          ARTICLE_TEXT=$(echo "$RESPONSE" | python3 <<EOF
+          ARTICLE_TEXT=$(echo "$RESPONSE" | python3 <<-EOF
           import sys, json
           data = json.load(sys.stdin)
           if 'choices' not in data or not data['choices']:
               sys.exit(1)
           print(data['choices'][0]['message']['content'])
           EOF
-              ) || { echo 'Error: Failed to extract article text from API response'; exit 1; }
+          ) || { echo 'Error: Failed to extract article text from API response'; exit 1; }
               
-              echo "$ARTICLE_TEXT" > article.md
-              echo "::set-output name=article_text::$ARTICLE_TEXT"
-
+          echo "$ARTICLE_TEXT" > article.md
+          echo "::set-output name=article_text::$ARTICLE_TEXT"
 
       - name: Fetch image from Unsplash
         id: fetch_image
@@ -89,7 +88,7 @@ jobs:
             echo "$ARTICLE_TEXT"
           } > _posts/$FILENAME
           mv post-image.jpg "public/blog/covers/${DATE}-image.jpg"
-          
+
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
