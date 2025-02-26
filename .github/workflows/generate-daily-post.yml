@@ -20,7 +20,8 @@ jobs:
       - name: Generate article content
         id: generate_content
         run: |
-          PROMPT=${{ secrets.PROMPT }}
+          # Affectation de la variable PROMPT avec des guillemets pour éviter les erreurs de syntaxe
+          PROMPT="${{ secrets.PROMPT }}"
 
           REQUEST_BODY=$(cat <<EOF
           {
@@ -32,16 +33,16 @@ jobs:
             "temperature": 0.7
           }
           EOF
-          )
+              )
 
-          RESPONSE=$(curl -s https://api.openai.com/v1/chat/completions \
-            -H "Content-Type: application/json" \
-            -H "Authorization: Bearer ${{ secrets.OPENAI_API_KEY }}" \
-            -d "$REQUEST_BODY")
+              RESPONSE=$(curl -s https://api.openai.com/v1/chat/completions \
+                -H "Content-Type: application/json" \
+                -H "Authorization: Bearer ${{ secrets.OPENAI_API_KEY }}" \
+                -d "$REQUEST_BODY")
 
-          echo "Raw OpenAI response: $RESPONSE"
+              echo "Raw OpenAI response: $RESPONSE"
 
-          ARTICLE_TEXT=$(echo "$RESPONSE" | python3 -c "
+              ARTICLE_TEXT=$(echo "$RESPONSE" | python3 -c "
           import sys, json
           data = json.load(sys.stdin)
           if 'choices' not in data or not data['choices']:
@@ -49,8 +50,8 @@ jobs:
           print(data['choices'][0]['message']['content'])
           " || { echo 'Error: Failed to extract article text from API response'; exit 1; })
 
-          echo "$ARTICLE_TEXT" > article.md
-          echo "::set-output name=article_text::$ARTICLE_TEXT"
+              echo "$ARTICLE_TEXT" > article.md
+              echo "::set-output name=article_text::$ARTICLE_TEXT"
 
       # 3. Récupération de l'image depuis Unsplash
       - name: Fetch image from Unsplash
