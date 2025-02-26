@@ -2,7 +2,7 @@ name: Generate Daily Post
 
 on:
   schedule:
-    - cron: "32 21 * * *" # Déclenche à 23h27 UTC tous les jours (à adapter)
+    - cron: "00 8 * * *"
   workflow_dispatch:
 
 jobs:
