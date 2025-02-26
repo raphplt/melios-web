@@ -1,0 +1,118 @@
+name: Generate Daily Post
+
+on:
+ schedule:
+  - cron: "0 5 * * *" # Déclenche à 05h00 UTC tous les jours (à adapter)
+ workflow_dispatch:
+
+jobs:
+ build:
+  runs-on: ubuntu-latest
+  steps:
+   # 1. Récupérer le repo
+   - name: Checkout repo
+     uses: actions/checkout@v2
+
+   # 2. Génération de l'article via l'API OpenAI
+   - name: Generate article content
+     id: generate_content
+     run: |
+      # Le prompt envoyé à ChatGPT
+      PROMPT="Écris-moi un article de blog structuré et concis sur le thème de la productivité pour les jeunes adultes. Inclure des conseils pratiques, une introduction et une conclusion motivante."
+
+      # Prépare la requête JSON
+      # Note : le modèle gpt-3.5-turbo s'utilise avec un param 'messages'
+      REQUEST_BODY=$(cat <<EOF
+      {
+        "model": "gpt-3.5-turbo",
+        "messages": [
+          {"role": "system", "content": "You are a helpful assistant that writes professional, easy-to-read blog articles in French."},
+          {"role": "user", "content": "$PROMPT"}
+        ],
+        "temperature": 0.7
+      }
+      EOF
+      )
+
+      # Envoie la requête à OpenAI
+      RESPONSE=$(curl -s https://api.openai.com/v1/chat/completions \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer ${{ secrets.OPENAI_API_KEY }}" \
+        -d "$REQUEST_BODY")
+
+      # Extrait le contenu (champ 'content' de l'objet 'choices[0].message')
+      ARTICLE_TEXT=$(echo "$RESPONSE" | python3 -c "import sys, json; print(json.load(sys.stdin)['choices'][0]['message']['content'])")
+
+      # Sauvegarde dans un fichier temporaire
+      echo "$ARTICLE_TEXT" > article.md
+
+      # Expose la variable pour l'utiliser dans les étapes suivantes
+      echo "::set-output name=article_text::$ARTICLE_TEXT"
+
+   # 3. Récupération de l'image depuis Unsplash
+   - name: Fetch image from Unsplash
+     id: fetch_image
+     run: |
+      # Mot clé (peut être adapté pour matcher le thème, ex: "productivity", "work", etc.)
+      KEYWORD="productivity"
+
+      RESULT=$(curl -s "https://api.unsplash.com/photos/random?query=$KEYWORD&client_id=${{ secrets.UNSPLASH_ACCESS_KEY }}")
+
+      # On tente d'extraire le champ "urls" -> "full" (ou "regular")
+      IMAGE_URL=$(echo "$RESULT" | python3 -c "import sys, json; print(json.load(sys.stdin)['urls']['regular'])")
+
+      # Télécharge l'image
+      curl -s -o post-image.jpg "$IMAGE_URL"
+
+   # 4. Création du fichier Markdown
+   - name: Create Markdown file
+     run: |
+      # Prépare les variables date
+      DATE=$(date +"%Y-%m-%d")
+      TIME=$(date +"%Y-%m-%dT%H:%M:%S.000Z")
+      FILENAME="${DATE}-post-productivite.md"
+
+      # Récupère le texte généré
+      ARTICLE_TEXT="${{ steps.generate_content.outputs.article_text }}"
+
+      # Définition du titre, excerpt, etc.
+      TITLE="Les Clés de la Productivité au Quotidien"
+      EXCERPT="Découvrez des astuces simples pour booster votre efficacité."
+      COVER_IMG="/blog/covers/${DATE}-image.jpg"
+      TAGS='["productivité","conseils","jeunes adultes"]'
+
+      # Création du dossier si inexistant
+      mkdir -p _posts
+      mkdir -p public/blog/covers
+
+      # Création du front matter
+      {
+        echo "---"
+        echo "title: \"$TITLE\""
+        echo "excerpt: \"$EXCERPT\""
+        echo "coverImage: \"$COVER_IMG\""
+        echo "date: \"$TIME\""
+        echo "author:"
+        echo "  name: \"Équipe Melios\""
+        echo "  picture: \"/blog/authors/melios-team.png\""
+        echo "ogImage:"
+        echo "  url: \"$COVER_IMG\""
+        echo "imageCredit: \"Photo by Unsplash\""
+        echo "tags: $TAGS"
+        echo "---"
+        echo ""
+        echo "$ARTICLE_TEXT"
+      } > _posts/$FILENAME
+
+      # Renomme et déplace l'image
+      mv post-image.jpg "public/blog/covers/${DATE}-image.jpg"
+
+   # 5. Commit et push
+   - name: Commit changes
+     run: |
+      git config user.name "github-actions"
+      git config user.email "github-actions@github.com"
+      git add _posts/*.md
+      git add public/blog/covers/*.jpg
+      git commit -m "feat: add new daily post"
+      git push
