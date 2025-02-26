@@ -38,15 +38,18 @@ jobs:
           
           echo "Raw OpenAI response: $RESPONSE"
           
-          ARTICLE_TEXT=$(echo "$RESPONSE" | python3 <<-EOF
-          import sys, json
-          data = json.load(sys.stdin)
+          # Vérifie que la réponse n'est pas vide
+          if [ -z "$RESPONSE" ]; then
+            echo "Error: Empty response from OpenAI API"
+            exit 1
+          fi
+          
+          # Extraction du contenu via Python inline
+          ARTICLE_TEXT=$(echo "$RESPONSE" | python3 -c "import sys, json; data = json.load(sys.stdin); 
           if 'choices' not in data or not data['choices']:
               sys.exit(1)
-          print(data['choices'][0]['message']['content'])
-          EOF
-          ) || { echo 'Error: Failed to extract article text from API response'; exit 1; }
-              
+          print(data['choices'][0]['message']['content'])" ) || { echo 'Error: Failed to extract article text from API response'; exit 1; }
+                        
           echo "$ARTICLE_TEXT" > article.md
           echo "::set-output name=article_text::$ARTICLE_TEXT"
 
@@ -68,8 +71,7 @@ jobs:
           EXCERPT="Découvrez des astuces simples pour booster votre efficacité."
           COVER_IMG="/blog/covers/${DATE}-image.jpg"
           TAGS='["productivité","conseils","jeunes adultes"]'
-          mkdir -p _posts
-          mkdir -p public/blog/covers
+          mkdir -p _posts public/blog/covers
           {
             echo "---"
             echo "title: \"$TITLE\""
