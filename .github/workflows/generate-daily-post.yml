@@ -38,16 +38,17 @@ jobs:
           
           echo "Raw OpenAI response: $RESPONSE"
           
-          ARTICLE_TEXT=$(echo "$RESPONSE" | python3 -c "
+          ARTICLE_TEXT=$(echo "$RESPONSE" | python3 <<EOF
           import sys, json
           data = json.load(sys.stdin)
           if 'choices' not in data or not data['choices']:
               sys.exit(1)
           print(data['choices'][0]['message']['content'])
-          " || { echo 'Error: Failed to extract article text from API response'; exit 1; })
-              
-              echo "$ARTICLE_TEXT" > article.md
-              echo "::set-output name=article_text::$ARTICLE_TEXT"
+          EOF
+          ) || { echo 'Error: Failed to extract article text from API response'; exit 1; }
+          
+          echo "$ARTICLE_TEXT" > article.md
+          echo "::set-output name=article_text::$ARTICLE_TEXT"
 
       - name: Fetch image from Unsplash
         id: fetch_image
