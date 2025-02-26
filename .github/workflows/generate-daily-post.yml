@@ -12,37 +12,42 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # 1. Récupérer le repo
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      # 2. Génération de l'article via l'API OpenAI
       - name: Generate article content
         id: generate_content
         run: |
-          # Affectation de la variable PROMPT avec des guillemets pour éviter les erreurs de syntaxe
+          # Récupère le prompt depuis les secrets en l'encapsulant dans des guillemets
           PROMPT="${{ secrets.PROMPT }}"
 
-          REQUEST_BODY=$(cat <<EOF
+          # Création du corps de la requête avec un heredoc non indenté
+          REQUEST_BODY=$(cat <<'EOF'
           {
             "model": "gpt-3.5-turbo",
             "messages": [
-              {"role": "system", "content": "You are a helpful assistant that writes professional, easy-to-read blog articles in French."},
-              {"role": "user", "content": "$PROMPT"}
+              {
+                "role": "system",
+                "content": "You are a helpful assistant that writes professional, easy-to-read blog articles in French."
+              },
+              {
+                "role": "user",
+                "content": "'"$PROMPT"'"
+              }
             ],
             "temperature": 0.7
           }
           EOF
-              )
+                    )
 
-              RESPONSE=$(curl -s https://api.openai.com/v1/chat/completions \
-                -H "Content-Type: application/json" \
-                -H "Authorization: Bearer ${{ secrets.OPENAI_API_KEY }}" \
-                -d "$REQUEST_BODY")
+                    RESPONSE=$(curl -s https://api.openai.com/v1/chat/completions \
+                      -H "Content-Type: application/json" \
+                      -H "Authorization: Bearer ${{ secrets.OPENAI_API_KEY }}" \
+                      -d "$REQUEST_BODY")
 
-              echo "Raw OpenAI response: $RESPONSE"
+                    echo "Raw OpenAI response: $RESPONSE"
 
-              ARTICLE_TEXT=$(echo "$RESPONSE" | python3 -c "
+                    ARTICLE_TEXT=$(echo "$RESPONSE" | python3 -c "
           import sys, json
           data = json.load(sys.stdin)
           if 'choices' not in data or not data['choices']:
@@ -50,10 +55,9 @@ jobs:
           print(data['choices'][0]['message']['content'])
           " || { echo 'Error: Failed to extract article text from API response'; exit 1; })
 
-              echo "$ARTICLE_TEXT" > article.md
-              echo "::set-output name=article_text::$ARTICLE_TEXT"
+          echo "$ARTICLE_TEXT" > article.md
+          echo "::set-output name=article_text::$ARTICLE_TEXT"
 
-      # 3. Récupération de l'image depuis Unsplash
       - name: Fetch image from Unsplash
         id: fetch_image
         run: |
@@ -62,7 +66,6 @@ jobs:
           IMAGE_URL=$(echo "$RESULT" | python3 -c "import sys, json; print(json.load(sys.stdin)['urls']['regular'])")
           curl -s -o post-image.jpg "$IMAGE_URL"
 
-      # 4. Création du fichier Markdown
       - name: Create Markdown file
         run: |
           DATE=$(date +"%Y-%m-%d")
@@ -94,7 +97,6 @@ jobs:
           } > _posts/$FILENAME
           mv post-image.jpg "public/blog/covers/${DATE}-image.jpg"
 
-      # 5. Commit et push
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
