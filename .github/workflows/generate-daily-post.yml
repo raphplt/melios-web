@@ -18,45 +18,36 @@ jobs:
       - name: Generate article content
         id: generate_content
         run: |
-          # Récupère le prompt depuis les secrets en l'encapsulant dans des guillemets
+          # Récupère le prompt depuis les secrets
           PROMPT="${{ secrets.PROMPT }}"
-
-          # Création du corps de la requête avec un heredoc non indenté
-          REQUEST_BODY=$(cat <<'EOF'
-          {
-            "model": "gpt-3.5-turbo",
-            "messages": [
-              {
-                "role": "system",
-                "content": "You are a helpful assistant that writes professional, easy-to-read blog articles in French."
-              },
-              {
-                "role": "user",
-                "content": "'"$PROMPT"'"
-              }
+          
+          # Construit le corps de la requête JSON avec jq
+          REQUEST_BODY=$(jq -n --arg prompt "$PROMPT" '{
+            model: "gpt-3.5-turbo",
+            messages: [
+              { role: "system", content: "You are a helpful assistant that writes professional, easy-to-read blog articles in French." },
+              { role: "user", content: $prompt }
             ],
-            "temperature": 0.7
-          }
-          EOF
-                    )
-
-                    RESPONSE=$(curl -s https://api.openai.com/v1/chat/completions \
-                      -H "Content-Type: application/json" \
-                      -H "Authorization: Bearer ${{ secrets.OPENAI_API_KEY }}" \
-                      -d "$REQUEST_BODY")
-
-                    echo "Raw OpenAI response: $RESPONSE"
-
-                    ARTICLE_TEXT=$(echo "$RESPONSE" | python3 -c "
+            temperature: 0.7
+          }')
+          
+          RESPONSE=$(curl -s https://api.openai.com/v1/chat/completions \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer ${{ secrets.OPENAI_API_KEY }}" \
+            -d "$REQUEST_BODY")
+          
+          echo "Raw OpenAI response: $RESPONSE"
+          
+          ARTICLE_TEXT=$(echo "$RESPONSE" | python3 -c "
           import sys, json
           data = json.load(sys.stdin)
           if 'choices' not in data or not data['choices']:
               sys.exit(1)
           print(data['choices'][0]['message']['content'])
           " || { echo 'Error: Failed to extract article text from API response'; exit 1; })
-
-          echo "$ARTICLE_TEXT" > article.md
-          echo "::set-output name=article_text::$ARTICLE_TEXT"
+              
+              echo "$ARTICLE_TEXT" > article.md
+              echo "::set-output name=article_text::$ARTICLE_TEXT"
 
       - name: Fetch image from Unsplash
         id: fetch_image
