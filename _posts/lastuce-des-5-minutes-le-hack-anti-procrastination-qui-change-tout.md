@@ -9,8 +9,7 @@ author:
 ogImage:
  url: "/blog/covers/5-minutes-astuce.jpg"
 imageCredit: "Crédit photo : Agê Barros / Unsplash"s
-tags:
- ["procrastination", "productivité", "développement personnel", "motivation"]
+tags: ["procrastination", "productivité", "développement personnel", "motivation"]
 ---
 
 ## Introduction
