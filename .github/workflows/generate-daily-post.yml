@@ -87,7 +87,7 @@ jobs:
             echo "$ARTICLE_TEXT"
           } > _posts/$FILENAME
           mv post-image.jpg "public/blog/covers/${DATE}-image.jpg"
-
+          
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
