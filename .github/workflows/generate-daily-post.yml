@@ -20,7 +20,7 @@ jobs:
       - name: Generate article content
         id: generate_content
         run: |
-          PROMPT="Écris-moi un article de blog structuré et concis sur le thème de la productivité pour les jeunes adultes. Inclure des conseils pratiques, une introduction et une conclusion motivante."
+          PROMPT=${{ secrets.PROMPT }}
 
           REQUEST_BODY=$(cat <<EOF
           {
