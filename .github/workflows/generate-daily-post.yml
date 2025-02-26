@@ -48,7 +48,7 @@ jobs:
           ARTICLE_TEXT=$(echo "$RESPONSE" | python3 -c "import sys, json; data = json.load(sys.stdin); print(data['choices'][0]['message']['content']) if data.get('choices') else sys.exit(1)") || { echo 'Error: Failed to extract article text'; exit 1; }
                         
           echo "$ARTICLE_TEXT" > article.md
-          echo "article_text=$ARTICLE_TEXT" >> $GITHUB_ENV
+          echo "article_text=$(echo "$ARTICLE_TEXT" | jq -sRr @uri)" >> $GITHUB_ENV
 
       - name: Fetch image from Unsplash
         id: fetch_image
@@ -82,7 +82,7 @@ jobs:
             echo "tags: $TAGS"
             echo "---"
             echo ""
-            echo "${{ env.article_text }}"
+            echo "$(echo "${{ env.article_text }}" | jq -sRr @uri)"
           } > _posts/$FILENAME
           mv post-image.jpg "public/blog/covers/${{ env.DATE }}-image.jpg"
 
