@@ -1,96 +1,96 @@
-name: Generate Daily Post
+# name: Generate Daily Post
 
-permissions:
-  contents: write
+# permissions:
+#   contents: write
 
-on:
-  schedule:
-    - cron: "00 8 * * *"
-  workflow_dispatch:
+# on:
+#   schedule:
+#     - cron: "00 8 * * *"
+#   workflow_dispatch:
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repo
+#         uses: actions/checkout@v2
 
-      - name: Set DATE variable
-        run: |
-          DATE=$(date +"%Y-%m-%d")
-          echo "DATE=$DATE" >> $GITHUB_ENV
+#       - name: Set DATE variable
+#         run: |
+#           DATE=$(date +"%Y-%m-%d")
+#           echo "DATE=$DATE" >> $GITHUB_ENV
 
-      - name: Generate article content
-        id: generate_content
-        run: |
-          PROMPT="${{ secrets.PROMPT }}"
-          REQUEST_BODY=$(jq -n --arg prompt "$PROMPT" '{
-            model: "gpt-3.5-turbo",
-            messages: [
-              { role: "system", content: "You are a helpful assistant that writes professional, easy-to-read blog articles in French." },
-              { role: "user", content: $prompt }
-            ],
-            temperature: 0.7
-          }')
+#       - name: Generate article content
+#         id: generate_content
+#         run: |
+#           PROMPT="${{ secrets.PROMPT }}"
+#           REQUEST_BODY=$(jq -n --arg prompt "$PROMPT" '{
+#             model: "gpt-3.5-turbo",
+#             messages: [
+#               { role: "system", content: "You are a helpful assistant that writes professional, easy-to-read blog articles in French." },
+#               { role: "user", content: $prompt }
+#             ],
+#             temperature: 0.7
+#           }')
           
-          RESPONSE=$(curl -s https://api.openai.com/v1/chat/completions \
-            -H "Content-Type: application/json" \
-            -H "Authorization: Bearer ${{ secrets.OPENAI_API_KEY }}" \
-            -d "$REQUEST_BODY")
+#           RESPONSE=$(curl -s https://api.openai.com/v1/chat/completions \
+#             -H "Content-Type: application/json" \
+#             -H "Authorization: Bearer ${{ secrets.OPENAI_API_KEY }}" \
+#             -d "$REQUEST_BODY")
           
-          echo "Raw OpenAI response: $RESPONSE"
+#           echo "Raw OpenAI response: $RESPONSE"
           
-          if [ -z "$RESPONSE" ]; then
-            echo "Error: Empty response from OpenAI API"
-            exit 1
-          fi
+#           if [ -z "$RESPONSE" ]; then
+#             echo "Error: Empty response from OpenAI API"
+#             exit 1
+#           fi
           
-          ARTICLE_TEXT=$(echo "$RESPONSE" | python3 -c "import sys, json; data = json.load(sys.stdin); print(data['choices'][0]['message']['content']) if data.get('choices') else sys.exit(1)") || { echo 'Error: Failed to extract article text'; exit 1; }
+#           ARTICLE_TEXT=$(echo "$RESPONSE" | python3 -c "import sys, json; data = json.load(sys.stdin); print(data['choices'][0]['message']['content']) if data.get('choices') else sys.exit(1)") || { echo 'Error: Failed to extract article text'; exit 1; }
                         
-          echo "$ARTICLE_TEXT" > article.md
-          echo "article_text=$(echo "$ARTICLE_TEXT" | jq -sRr @uri)" >> $GITHUB_ENV
+#           echo "$ARTICLE_TEXT" > article.md
+#           echo "article_text=$(echo "$ARTICLE_TEXT" | jq -sRr @uri)" >> $GITHUB_ENV
 
-      - name: Fetch image from Unsplash
-        id: fetch_image
-        run: |
-          KEYWORD="productivity"
-          RESULT=$(curl -s "https://api.unsplash.com/photos/random?query=$KEYWORD&client_id=${{ secrets.UNSPLASH_ACCESS_KEY }}")
-          IMAGE_URL=$(echo "$RESULT" | python3 -c "import sys, json; print(json.load(sys.stdin)['urls']['regular'])")
-          curl -s -o post-image.jpg "$IMAGE_URL"
+#       - name: Fetch image from Unsplash
+#         id: fetch_image
+#         run: |
+#           KEYWORD="productivity"
+#           RESULT=$(curl -s "https://api.unsplash.com/photos/random?query=$KEYWORD&client_id=${{ secrets.UNSPLASH_ACCESS_KEY }}")
+#           IMAGE_URL=$(echo "$RESULT" | python3 -c "import sys, json; print(json.load(sys.stdin)['urls']['regular'])")
+#           curl -s -o post-image.jpg "$IMAGE_URL"
 
-      - name: Create Markdown file
-        run: |
-          TIME=$(date +"%Y-%m-%dT%H:%M:%S.000Z")
-          FILENAME="${{ env.DATE }}-post-productivite.md"
-          TITLE="Les Clés de la Productivité au Quotidien"
-          EXCERPT="Découvrez des astuces simples pour booster votre efficacité."
-          COVER_IMG="/blog/covers/${{ env.DATE }}-image.jpg"
-          TAGS='["productivité","conseils","jeunes adultes"]'
-          mkdir -p _posts public/blog/covers
-          {
-            echo "---"
-            echo "title: \"$TITLE\""
-            echo "excerpt: \"$EXCERPT\""
-            echo "coverImage: \"$COVER_IMG\""
-            echo "date: \"$TIME\""
-            echo "author:"
-            echo "  name: \"Équipe Melios\""
-            echo "  picture: \"/blog/authors/melios-team.png\""
-            echo "ogImage:"
-            echo "  url: \"$COVER_IMG\""
-            echo "imageCredit: \"Photo by Unsplash\""
-            echo "tags: $TAGS"
-            echo "---"
-            echo ""
-            echo "$(echo "${{ env.article_text }}" | jq -sRr @uri)"
-          } > _posts/$FILENAME
-          mv post-image.jpg "public/blog/covers/${{ env.DATE }}-image.jpg"
+#       - name: Create Markdown file
+#         run: |
+#           TIME=$(date +"%Y-%m-%dT%H:%M:%S.000Z")
+#           FILENAME="${{ env.DATE }}-post-productivite.md"
+#           TITLE="Les Clés de la Productivité au Quotidien"
+#           EXCERPT="Découvrez des astuces simples pour booster votre efficacité."
+#           COVER_IMG="/blog/covers/${{ env.DATE }}-image.jpg"
+#           TAGS='["productivité","conseils","jeunes adultes"]'
+#           mkdir -p _posts public/blog/covers
+#           {
+#             echo "---"
+#             echo "title: \"$TITLE\""
+#             echo "excerpt: \"$EXCERPT\""
+#             echo "coverImage: \"$COVER_IMG\""
+#             echo "date: \"$TIME\""
+#             echo "author:"
+#             echo "  name: \"Équipe Melios\""
+#             echo "  picture: \"/blog/authors/melios-team.png\""
+#             echo "ogImage:"
+#             echo "  url: \"$COVER_IMG\""
+#             echo "imageCredit: \"Photo by Unsplash\""
+#             echo "tags: $TAGS"
+#             echo "---"
+#             echo ""
+#             echo "$(echo "${{ env.article_text }}" | jq -sRr @uri)"
+#           } > _posts/$FILENAME
+#           mv post-image.jpg "public/blog/covers/${{ env.DATE }}-image.jpg"
 
-      - name: Commit changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add _posts/*.md public/blog/covers/*.jpg
-          git commit -m "feat: add new daily post" || echo "No changes to commit"
-          git remote set-url origin "https://github.com/raphplt/melios-web.git"
-          git push origin HEAD:main
+#       - name: Commit changes
+#         run: |
+#           git config user.name "github-actions[bot]"
+#           git config user.email "github-actions[bot]@users.noreply.github.com"
+#           git add _posts/*.md public/blog/covers/*.jpg
+#           git commit -m "feat: add new daily post" || echo "No changes to commit"
+#           git remote set-url origin "https://github.com/raphplt/melios-web.git"
+#           git push origin HEAD:main
