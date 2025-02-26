@@ -1,5 +1,8 @@
 name: Generate Daily Post
 
+permissions:
+  contents: write
+
 on:
   schedule:
     - cron: "00 8 * * *"  # Déclenche tous les jours à 08:00 UTC
@@ -17,10 +20,8 @@ jobs:
       - name: Generate article content
         id: generate_content
         run: |
-          # Le prompt envoyé à ChatGPT
           PROMPT="Écris-moi un article de blog structuré et concis sur le thème de la productivité pour les jeunes adultes. Inclure des conseils pratiques, une introduction et une conclusion motivante."
 
-          # Prépare la requête JSON
           REQUEST_BODY=$(cat <<EOF
           {
             "model": "gpt-3.5-turbo",
@@ -31,18 +32,15 @@ jobs:
             "temperature": 0.7
           }
           EOF
-                )
+          )
 
-          # Envoie la requête à OpenAI
           RESPONSE=$(curl -s https://api.openai.com/v1/chat/completions \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer ${{ secrets.OPENAI_API_KEY }}" \
             -d "$REQUEST_BODY")
 
-          # Affiche la r²éponse brute pour le debug
           echo "Raw OpenAI response: $RESPONSE"
 
-          # Extrait le contenu (champ 'content' de l'objet 'choices[0].message') avec gestion d'erreur
           ARTICLE_TEXT=$(echo "$RESPONSE" | python3 -c "
           import sys, json
           data = json.load(sys.stdin)
@@ -51,49 +49,31 @@ jobs:
           print(data['choices'][0]['message']['content'])
           " || { echo 'Error: Failed to extract article text from API response'; exit 1; })
 
-          # Sauvegarde dans un fichier temporaire
           echo "$ARTICLE_TEXT" > article.md
-
-          # Expose la variable pour l'utiliser dans les étapes suivantes
           echo "::set-output name=article_text::$ARTICLE_TEXT"
 
       # 3. Récupération de l'image depuis Unsplash
       - name: Fetch image from Unsplash
         id: fetch_image
         run: |
-          # Mot clé pour la recherche d'image
           KEYWORD="productivity"
-
           RESULT=$(curl -s "https://api.unsplash.com/photos/random?query=$KEYWORD&client_id=${{ secrets.UNSPLASH_ACCESS_KEY }}")
-
-          # Extraction de l'URL de l'image (ici, le format 'regular')
           IMAGE_URL=$(echo "$RESULT" | python3 -c "import sys, json; print(json.load(sys.stdin)['urls']['regular'])")
-
-          # Télécharge l'image
           curl -s -o post-image.jpg "$IMAGE_URL"
 
       # 4. Création du fichier Markdown
       - name: Create Markdown file
         run: |
-          # Prépare les variables de date
           DATE=$(date +"%Y-%m-%d")
           TIME=$(date +"%Y-%m-%dT%H:%M:%S.000Z")
           FILENAME="${DATE}-post-productivite.md"
-
-          # Récupère le texte généré
           ARTICLE_TEXT="${{ steps.generate_content.outputs.article_text }}"
-
-          # Définition du titre, excerpt, etc.
           TITLE="Les Clés de la Productivité au Quotidien"
           EXCERPT="Découvrez des astuces simples pour booster votre efficacité."
           COVER_IMG="/blog/covers/${DATE}-image.jpg"
           TAGS='["productivité","conseils","jeunes adultes"]'
-
-          # Création des dossiers si inexistant
           mkdir -p _posts
           mkdir -p public/blog/covers
-
-          # Création du fichier Markdown avec le front matter
           {
             echo "---"
             echo "title: \"$TITLE\""
@@ -111,16 +91,13 @@ jobs:
             echo ""
             echo "$ARTICLE_TEXT"
           } > _posts/$FILENAME
-
-          # Renomme et déplace l'image
           mv post-image.jpg "public/blog/covers/${DATE}-image.jpg"
 
       # 5. Commit et push
       - name: Commit changes
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add _posts/*.md
-          git add public/blog/covers/*.jpg
-          git commit -m "feat: add new daily post"
-          git push
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add _posts/*.md public/blog/covers/*.jpg
+          git commit -m "feat: add new daily post" || echo "No changes to commit"
+          git push "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/raphplt/melios-web.git" HEAD:main
