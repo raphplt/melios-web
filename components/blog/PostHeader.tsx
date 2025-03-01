@@ -9,6 +9,7 @@ type Props = {
 	date: string;
 	author: Author;
 	imageCredit?: string;
+	readingTime: string;
 };
 
 export function PostHeader({
@@ -17,12 +18,13 @@ export function PostHeader({
 	date,
 	author,
 	imageCredit,
+	readingTime,
 }: Props) {
 	return (
 		<>
 			<h1
 				className="text-xl md:text-2xl lg:text-3xl font-bold tracking-tighter leading-tight 
-			md:leading-none mb-4 mt-2 text-left"
+            md:leading-none mb-4 mt-2 text-left"
 				aria-label={title}
 			>
 				{title}
@@ -30,16 +32,17 @@ export function PostHeader({
 			<div className="hidden md:block md:mb-6">
 				<Avatar name={author.name} picture={author.picture} />
 			</div>
-			<div className="mb-5 md:mb-8 sm:mx-0">
+			<div className="mb-5 md:mb-6 sm:mx-0">
 				<CoverImage title={title} src={coverImage} />
 				{imageCredit && <p className="text-sm text-gray-500 mt-2">{imageCredit}</p>}
 			</div>
 			<div className="max-w-2xl mx-auto">
-				<div className="block md:hidden mb-6">
+				<div className="block md:hidden mb-4">
 					<Avatar name={author.name} picture={author.picture} />
 				</div>
-				<div className="mb-6 text-lg">
-					<DateFormatter dateString={date} />
+				<div className="mb-6 text-lg flex items-center gap-x-2">
+					<DateFormatter dateString={date} /> •
+					<p className="text-sm text-gray-500">{readingTime}</p>
 				</div>
 			</div>
 		</>

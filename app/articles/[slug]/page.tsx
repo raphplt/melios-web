@@ -8,6 +8,7 @@ import RelatedPosts from "@/components/blog/RelatedPosts";
 import ShareArticle from "@/components/blog/ShareArticle";
 import Breadcrumb from "@/components/blog/Breadcrumb";
 import DownloadButtons from "@/components/blog/DownloadButtons";
+import readingTime from "reading-time";
 
 export default async function Post(props: Params) {
 	const params = await props.params;
@@ -18,6 +19,7 @@ export default async function Post(props: Params) {
 	}
 
 	const content = await markdownToHtml(post.content || "");
+	const readingStats = readingTime(post.content || "");
 
 	const relatedPosts = getRelatedPosts(post);
 
@@ -38,6 +40,7 @@ export default async function Post(props: Params) {
 						date={post.date}
 						author={post.author}
 						imageCredit={post.imageCredit}
+						readingTime={readingStats.text}
 					/>
 					<PostBody content={content} />
 					<DownloadButtons />
