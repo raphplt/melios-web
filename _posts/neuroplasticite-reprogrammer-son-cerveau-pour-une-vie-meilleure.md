@@ -11,6 +11,7 @@ ogImage:
 imageCredit: "Photo by Daniel Öberg on Unsplash"
 tags:
  ["neuroplasticité", "habitudes", "apprentissage", "développement personnel"]
+pinned: true
 ---
 
 ## Votre Cerveau Peut Changer : Le Pouvoir de la Neuroplasticité

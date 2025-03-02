@@ -9,37 +9,45 @@ import { PostPreviewCompact } from "@/components/blog/PostPreviewCompact";
 export default function Index() {
     const [page, setPage] = useState(1);
     const [allPosts, setAllPosts] = useState<Post[]>([]);
-    const [hasMorePosts, setHasMorePosts] = useState(true);
-    const [loadedSlugs, setLoadedSlugs] = useState<Set<string>>(new Set());
+    const [pinnedPosts, setPinnedPosts] = useState<Post[]>([]);
+				const [hasMorePosts, setHasMorePosts] = useState(true);
+				const [loadedSlugs, setLoadedSlugs] = useState<Set<string>>(new Set());
 
-    useEffect(() => {
-        const fetchPosts = async () => {
-            const res = await fetch(`/api/posts?page=${page}`);
-            const newPosts = await res.json();
+				useEffect(() => {
+					const fetchPosts = async () => {
+						const res = await fetch(`/api/posts?page=${page}`);
+						const newPosts = await res.json();
 
-            const uniquePosts = newPosts.filter(
-                (post: Post) => !loadedSlugs.has(post.slug)
-            );
-            setAllPosts((prevPosts) => [...prevPosts, ...uniquePosts]);
-            setLoadedSlugs((prevSlugs) => {
-                const newSlugs = new Set(prevSlugs);
-                uniquePosts.forEach((post: Post) => newSlugs.add(post.slug));
-                return newSlugs;
-            });
+						const uniquePosts = newPosts.filter(
+							(post: Post) => !loadedSlugs.has(post.slug)
+						);
+						setAllPosts((prevPosts) => [...prevPosts, ...uniquePosts]);
+						setLoadedSlugs((prevSlugs) => {
+							const newSlugs = new Set(prevSlugs);
+							uniquePosts.forEach((post: Post) => newSlugs.add(post.slug));
+							return newSlugs;
+						});
 
-            if (newPosts.length === 0 || newPosts.length < 10) {
-                setHasMorePosts(false);
-            }
-        };
+						if (newPosts.length === 0 || newPosts.length < 10) {
+							setHasMorePosts(false);
+						}
+					};
 
-        fetchPosts();
-    }, [page]);
+					fetchPosts();
+				}, [page]);
 
-    const heroPost = allPosts[0];
-    const morePosts = allPosts.slice(1);
+				useEffect(() => {
+					const fetchPinnedPosts = async () => {
+						const res = await fetch(`/api/posts/pinned`);
+						const pinnedPosts = await res.json();
+						setPinnedPosts(pinnedPosts);
+					};
 
-    // Filtrer les articles épinglés à partir de tous les articles
-    const pinnedPosts = allPosts.filter((post) => post.pinned);
+					fetchPinnedPosts();
+				}, []);
+
+				const heroPost = allPosts[0];
+				const morePosts = allPosts.slice(1);
 
     const loadMorePosts = () => {
         setPage((prevPage) => prevPage + 1);

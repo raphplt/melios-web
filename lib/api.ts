@@ -18,11 +18,19 @@ export function getPostBySlug(slug: string) {
 	return { ...data, slug: realSlug, content } as Post;
 }
 
-export function getAllPosts(page: number = 1, limit: number = 10): Post[] {
+export function getAllPosts(
+	page: number = 1,
+	limit: number = 10,
+	noLimit: boolean = false
+): Post[] {
 	const slugs = getPostSlugs();
 	const posts = slugs
 		.map((slug) => getPostBySlug(slug))
 		.sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
+
+	if (noLimit) {
+		return posts;
+	}
 
 	const startIndex = (page - 1) * limit;
 	const endIndex = page * limit;
@@ -31,13 +39,21 @@ export function getAllPosts(page: number = 1, limit: number = 10): Post[] {
 }
 
 export function getRelatedPosts(currentPost: Post) {
-	const allPosts = getAllPosts();
-	const relatedPosts = allPosts
-		.filter(
-			(post) =>
-				post.slug !== currentPost.slug &&
-				post.tags.some((tag) => currentPost.tags.includes(tag))
-		)
-		.slice(0, 3);
-	return relatedPosts;
+    const allPosts = getAllPosts(1, 10, true);
+				const relatedPosts = allPosts
+					.filter(
+						(post) =>
+							post.slug !== currentPost.slug &&
+							post.tags.some((tag) => currentPost.tags.includes(tag))
+					)
+					.slice(0, 3);
+				return relatedPosts;
+}
+
+export function getPinnedPosts(): Post[] {
+	const allPosts = getAllPosts(1, 10, true);
+	const pinnedPosts = allPosts
+		.filter((post) => post.pinned)
+		.sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
+	return pinnedPosts;
 }

@@ -10,7 +10,6 @@ ogImage:
  url: "/blog/covers/welcome-cover.jpg"
 imageCredit: "Photo by Melios"
 tags: ["bienvenue", "développement personnel", "gamification"]
-pinned: true
 ---
 
 Bienvenue sur le blog officiel de **Melios**, la plateforme qui transforme votre développement personnel en une aventure ludique et motivante !
