@@ -1,59 +1,75 @@
-import { Post } from "@/interfaces/post";
-import fs from "fs";
-import matter from "gray-matter";
-import { join } from "path";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// lib/api.ts
+import { supabase } from "./supabaseClient";
 
-const postsDirectory = join(process.cwd(), "_posts");
-
-export function getPostSlugs() {
-	return fs.readdirSync(postsDirectory);
-}
-
-export function getPostBySlug(slug: string) {
-	const realSlug = slug.replace(/\.md$/, "");
-	const fullPath = join(postsDirectory, `${realSlug}.md`);
-	const fileContents = fs.readFileSync(fullPath, "utf8");
-	const { data, content } = matter(fileContents);
-
-	return { ...data, slug: realSlug, content } as Post;
-}
-
-export function getAllPosts(
+export async function getAllPosts(
 	page: number = 1,
 	limit: number = 10,
 	noLimit: boolean = false
-): Post[] {
-	const slugs = getPostSlugs();
-	const posts = slugs
-		.map((slug) => getPostBySlug(slug))
-		.sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
+) {
+	let query = supabase
+		.from("posts")
+		.select("*")
+		.order("date", { ascending: false });
 
-	if (noLimit) {
-		return posts;
+	if (!noLimit) {
+		const from = (page - 1) * limit;
+		const to = from + limit - 1;
+		query = query.range(from, to);
 	}
 
-	const startIndex = (page - 1) * limit;
-	const endIndex = page * limit;
-
-	return posts.slice(startIndex, endIndex);
+	const { data, error } = await query;
+	if (error) {
+		throw new Error(error.message);
+	}
+	return data;
 }
 
-export function getRelatedPosts(currentPost: Post) {
-    const allPosts = getAllPosts(1, 10, true);
-				const relatedPosts = allPosts
-					.filter(
-						(post) =>
-							post.slug !== currentPost.slug &&
-							post.tags.some((tag) => currentPost.tags.includes(tag))
-					)
-					.slice(0, 3);
-				return relatedPosts;
+// Récupère un post selon son slug
+export async function getPostBySlug(slug: string) {
+	const { data, error } = await supabase
+		.from("posts")
+		.select("*")
+		.eq("slug", slug)
+		.single();
+
+	if (error) {
+		throw new Error(error.message);
+	}
+	return data;
 }
 
-export function getPinnedPosts(): Post[] {
-	const allPosts = getAllPosts(1, 10, true);
-	const pinnedPosts = allPosts
-		.filter((post) => post.pinned)
-		.sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
-	return pinnedPosts;
+// Récupère les posts liés par des tags en commun (excluant le post courant)
+export async function getRelatedPosts(currentPost: any) {
+	// On récupère tous les posts sauf celui en cours
+	const { data: allPosts, error } = await supabase
+		.from("posts")
+		.select("*")
+		.neq("slug", currentPost.slug);
+
+	if (error) {
+		throw new Error(error.message);
+	}
+	// Filtrage en mémoire selon l'intersection des tags
+	const relatedPosts = allPosts
+		.filter((post: any) => {
+			if (!post.tags || !currentPost.tags) return false;
+			return post.tags.some((tag: string) => currentPost.tags.includes(tag));
+		})
+		.slice(0, 3);
+	return relatedPosts;
+}
+
+// Récupère les posts épinglés
+export async function getPinnedPosts() {
+	const { data, error } = await supabase
+		.from("posts")
+		.select("*")
+		.eq("pinned", true)
+		.order("date", { ascending: false });
+
+	if (error) {
+		throw new Error(error.message);
+	}
+	return data;
 }

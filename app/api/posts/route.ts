@@ -6,6 +6,11 @@ export async function GET(request: Request) {
 	const page = Number(searchParams.get("page") || "1");
 	const limit = Number(searchParams.get("limit") || "10");
 
-	const posts = getAllPosts(page, limit);
-	return NextResponse.json(posts);
+	try {
+		const posts = await getAllPosts(page, limit);
+		return NextResponse.json(posts);
+	} catch (error: unknown) {
+		if (error instanceof Error)
+			return NextResponse.json({ error: error.message }, { status: 500 });
+	}
 }

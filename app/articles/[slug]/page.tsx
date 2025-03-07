@@ -12,7 +12,7 @@ import readingTime from "reading-time";
 
 export default async function Post(props: Params) {
 	const params = await props.params;
-	const post = getPostBySlug(params.slug);
+	const post = await getPostBySlug(params.slug);
 
 	if (!post) {
 		return notFound();
@@ -21,7 +21,8 @@ export default async function Post(props: Params) {
 	const content = await markdownToHtml(post.content || "");
 	const readingStats = readingTime(post.content || "");
 
-	const relatedPosts = getRelatedPosts(post);
+	// Si getRelatedPosts est asynchrone, n'oubliez pas d'attendre sa résolution
+	const relatedPosts = await getRelatedPosts(post);
 
 	const breadcrumbItems = [
 		{ label: "Accueil", href: "/" },
@@ -63,13 +64,13 @@ type Params = {
 
 export async function generateMetadata(props: Params): Promise<Metadata> {
 	const params = await props.params;
-	const post = getPostBySlug(params.slug);
+	const post = await getPostBySlug(params.slug);
 
 	if (!post) {
 		return notFound();
 	}
 
-	const title = `${post.title} | Melios Blog `;
+	const title = `${post.title} | Melios Blog`;
 
 	return {
 		title,
@@ -81,8 +82,7 @@ export async function generateMetadata(props: Params): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-	const posts = getAllPosts();
-
+	const posts = await getAllPosts();
 	return posts.map((post) => ({
 		slug: post.slug,
 	}));

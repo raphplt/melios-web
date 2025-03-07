@@ -9,7 +9,7 @@ type Props = {
 	coverImage: string;
 	date: string;
 	excerpt: string;
-	author: Author;
+	author: string;
 	slug: string;
 };
 
@@ -21,6 +21,7 @@ export function HeroPost({
 	author,
 	slug,
 }: Props) {
+	const authorParse: Author = JSON.parse(author);
 	return (
 		<section className="bg-default-50 rounded-md">
 			<div className="mb-8 md:mb-5">
@@ -36,8 +37,7 @@ export function HeroPost({
 					<p className="text-md text-default-500 w-10/12 leading-relaxed text-sm mb-2">
 						{excerpt}
 					</p>
-
-					<Avatar name={author.name} picture={author.picture} />
+					<Avatar name={authorParse.name} picture={authorParse.picture} />
 					<div className="mb-4 mt-2 md:mb-0 text-lg">
 						<DateFormatter dateString={date} />
 					</div>

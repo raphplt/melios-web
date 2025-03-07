@@ -2,13 +2,14 @@ import { type Author } from "@/interfaces/author";
 import Link from "next/link";
 import DateFormatter from "./DateFormatter";
 import Avatar from "./Avatar";
+import Image from "next/image";
 
 type Props = {
 	title: string;
 	coverImage: string;
 	date: string;
 	excerpt: string;
-	author: Author;
+	author: string;
 	slug: string;
 };
 
@@ -20,11 +21,15 @@ export function PostPreview({
 	author,
 	slug,
 }: Props) {
+	const authorParse: Author = JSON.parse(author);
+
 	return (
 		<Link href={`/articles/${slug}`}>
 			<div className="group max-w-2xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl">
 				<div className="w-full h-64 overflow-hidden">
-					<img
+					<Image
+						width={500}
+						height={500}
 						src={coverImage}
 						alt={`Image de couverture pour ${title}`}
 						className="w-full h-full object-cover"
@@ -46,7 +51,7 @@ export function PostPreview({
 
 					<div className="mt-4 flex items-center justify-between">
 						<div className="flex items-center">
-							<Avatar name={author.name} picture={author.picture} />
+							<Avatar name={authorParse.name} picture={authorParse.picture} />
 						</div>
 
 						<div className="text-primary hover:text-primaryLight transition-all duration-200 font-medium text-sm">
