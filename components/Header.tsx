@@ -3,6 +3,10 @@ import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { Button, Popover, PopoverContent, PopoverTrigger } from "@heroui/react";
+import Android from "./icons/Android";
+import Apple from "./icons/Apple";
+import Download from "./icons/Download";
 
 export default function Header() {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -31,12 +35,18 @@ export default function Header() {
 					className="flex items-center space-x-4 cursor-pointer"
 					aria-label="Accueil"
 				>
-					<Image src="/images/Logo_Melios.png" alt="Melios" width={40} height={40} />
-					<div className="text-xl font-bold">Melios</div>
+					<Image
+						src="/images/Logo_Melios.png"
+						alt="Melios"
+						width={40}
+						height={40}
+						className="rounded-lg"
+					/>
+					<div className="text-2xl font-bold text-primary">Melios</div>
 				</Link>
 
 				<nav className="hidden md:block" aria-label="Navigation principale">
-					<ul className="flex space-x-8 text-sm">
+					<ul className="flex space-x-8 text-sm items-center">
 						<li>
 							<Link
 								href="#features"
@@ -86,6 +96,59 @@ export default function Header() {
 							>
 								Articles
 							</Link>
+						</li>
+						<li>
+							<Popover>
+								<PopoverTrigger>
+									<Button
+										color="primary"
+										endContent={<Download />}
+										aria-label="Télécharger"
+									>
+										Télécharger
+									</Button>
+								</PopoverTrigger>
+								<PopoverContent>
+									<div className="p-4">
+										<p
+											className="text-lg text-primary font-bold mb-2"
+											aria-label="Téléchargez l'application"
+										>
+											Téléchargez l&apos;application
+										</p>
+										<p
+											className="text-sm text-gray-600"
+											aria-label="Disponible sur Android et iOS"
+										>
+											Disponible sur Android et iOS
+										</p>
+										<div className="flex justify-center mt-4 gap-4">
+											<Button
+												variant="solid"
+												color="primary"
+												endContent={<Android />}
+												href="https://play.google.com/store/apps/details?id=com.raphplt.melios&pcampaignid=web_share"
+												as={Link}
+												target="_blank"
+												arial-label="Télécharger sur Android"
+											>
+												Android
+											</Button>
+											<Button
+												variant="ghost"
+												endContent={<Apple />}
+												color="primary"
+												href="https://apps.apple.com/fr/app/melios/id6664069292?platform=iphone"
+												as={Link}
+												target="_blank"
+												arial-label="Télécharger sur iOS"
+											>
+												iOS
+											</Button>
+										</div>
+									</div>
+								</PopoverContent>
+							</Popover>
 						</li>
 					</ul>
 				</nav>

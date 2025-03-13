@@ -63,18 +63,68 @@ export default function DownloadSection() {
 					<span>Disponible sur Google Play</span>
 				</Button>
 			</div>
-			<div className="mt-12 flex justify-center">
+			<div className="mt-12 flex flex-col lg:flex-row justify-center items-center gap-8 w-full max-w-7xl mx-auto">
 				<Image
 					src="/images/Preview.png"
 					alt="Aperçu de l'application Melios"
 					width={800}
 					height={500}
-					className="object-cover bg-default-50 rounded-2xl shadow-xl w-10/12
-					opacity-0 transition-opacity intersect-half 
-					intersect:motion-preset-shrink intersect:opacity-100 intersect-once duration-400
-					"
+					className="object-cover bg-default-50 rounded-2xl shadow-xl lg:w-7/12
+                    opacity-0 transition-opacity intersect-half 
+                    intersect:motion-preset-shrink intersect:opacity-100 intersect-once duration-400"
 					aria-label="Aperçu de l'application Melios"
 				/>
+
+				<div className="lg:w-5/12 space-y-8">
+					<div className="grid grid-cols-2 gap-6">
+						<div className="text-center opacity-0 intersect-half intersect:opacity-100 intersect-once duration-400 intersect:motion-delay-200">
+							<div className="text-4xl font-bold">+100</div>
+							<div className="text-default-200">Utilisateurs actifs</div>
+						</div>
+						<div className="text-center opacity-0 intersect-half intersect:opacity-100 intersect-once duration-400 intersect:motion-delay-300">
+							<div className="text-4xl font-bold">4.9</div>
+							<div className="text-default-200">Note moyenne</div>
+						</div>
+					</div>
+
+					<div className="space-y-4 opacity-0 intersect-half intersect:opacity-100 intersect-once duration-400 intersect:motion-delay-400">
+						<h3 className="text-2xl font-bold">Pourquoi rejoindre Melios ?</h3>
+						<ul className="space-y-3 ml-20">
+							<li className="flex items-center gap-2">
+								<Icon
+									icon="heroicons:check-circle"
+									className="text-success"
+									width={24}
+								/>
+								<span>Application 100% gratuite</span>
+							</li>
+							<li className="flex items-center gap-2">
+								<Icon
+									icon="heroicons:check-circle"
+									className="text-success"
+									width={24}
+								/>
+								<span>Sans publicité</span>
+							</li>
+							<li className="flex items-center gap-2">
+								<Icon
+									icon="heroicons:check-circle"
+									className="text-success"
+									width={24}
+								/>
+								<span>Mise à jour régulière</span>
+							</li>
+							<li className="flex items-center gap-2">
+								<Icon
+									icon="heroicons:check-circle"
+									className="text-success"
+									width={24}
+								/>
+								<span>Support réactif</span>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</section>
 	);

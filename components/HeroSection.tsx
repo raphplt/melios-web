@@ -4,6 +4,7 @@ import Download from "./icons/Download";
 import Apple from "./icons/Apple";
 import Android from "./icons/Android";
 import Link from "next/link";
+import ArticlesPreview from "./ArticlesPreview";
 
 export default function HeroSection() {
 	return (
@@ -100,6 +101,7 @@ export default function HeroSection() {
 						</PopoverContent>
 					</Popover>
 				</div>
+				<ArticlesPreview />
 			</div>
 
 			<style jsx global>{`
