@@ -11,7 +11,7 @@ export default function HeroSection() {
 		<section className="relative min-h-screen flex items-center justify-center overflow-hidden">
 			<div className="absolute inset-0 z-[-2] animate-gradient" />
 
-			<div className="relative z-10 text-white w-full sm:w-3/4 lg:w-1/2 flex flex-col gap-y-6 px-4 sm:px-6 lg:px-8">
+			<div className="relative z-10 text-white w-full sm:w-3/4 lg:w-1/2 flex flex-col gap-y-6 px-4 sm:px-6 lg:px-8 mt-28">
 				<div className="motion-preset-compress flex flex-col">
 					<h1
 						className="text-4xl sm:text-5xl md:text-6xl font-bold text-center"
@@ -24,12 +24,12 @@ export default function HeroSection() {
 					</h1>
 				</div>
 				<p
-					className="text-base sm:text-lg md:text-xl text-center mb-8 motion-preset-focus motion-delay-300 text-default-100"
+					className="text-base sm:text-lg md:text-xl text-center mb-8 motion-preset-focus motion-delay-300 text-default-100 w-10/12 mx-auto"
 					aria-label="La nouvelle façon de gérer votre quotidien avec simplicité et efficacité."
 				>
 					La nouvelle façon de gérer votre quotidien avec simplicité et efficacité.
 				</p>
-				<div className="flex flex-col sm:flex-row justify-center gap-6 mt-12">
+				<div className="flex flex-col sm:flex-row justify-center gap-6 mt-8">
 					<Button
 						variant="solid"
 						color="primary"
