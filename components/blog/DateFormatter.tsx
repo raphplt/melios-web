@@ -10,7 +10,6 @@ const DateFormatter = ({ dateString }: Props) => {
 	return (
 		<time
 			dateTime={dateString}
-			className="text-default-500 text-sm"
 			aria-label={format(date, "d LLLL yyyy", { locale: fr })}
 		>
 			{format(date, "d LLLL yyyy", { locale: fr })}

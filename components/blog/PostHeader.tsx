@@ -7,7 +7,7 @@ type Props = {
 	title: string;
 	coverImage: string;
 	date: string;
-	author: Author;
+	author: string;
 	imageCredit?: string;
 	readingTime: string;
 };
@@ -20,6 +20,8 @@ export function PostHeader({
 	imageCredit,
 	readingTime,
 }: Props) {
+	const authorParsed = JSON.parse(author) as Author;
+
 	return (
 		<>
 			<h1
@@ -30,7 +32,7 @@ export function PostHeader({
 				{title}
 			</h1>
 			<div className="hidden md:block md:mb-6">
-				<Avatar name={author.name} picture={author.picture} />
+				<Avatar name={authorParsed.name} picture={authorParsed.picture} />
 			</div>
 			<div className="mb-5 md:mb-6 sm:mx-0">
 				<CoverImage title={title} src={coverImage} />
@@ -38,7 +40,7 @@ export function PostHeader({
 			</div>
 			<div className="max-w-2xl mx-auto">
 				<div className="block md:hidden mb-4">
-					<Avatar name={author.name} picture={author.picture} />
+					<Avatar name={authorParsed.name} picture={authorParsed.picture} />
 				</div>
 				<div className="mb-6 text-lg flex items-center gap-x-2">
 					<DateFormatter dateString={date} /> •

@@ -9,9 +9,17 @@ import ArticlesPreview from "./ArticlesPreview";
 export default function HeroSection() {
 	return (
 		<section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-			<div className="absolute inset-0 z-[-2] animate-gradient" />
+			<video
+				autoPlay
+				loop
+				muted
+				playsInline
+				className="absolute inset-0 w-full h-full object-cover z-[-2] bg-gradient-to-t from-primary to-primaryLight"
+			>
+				<source src="/images/bg-video.mp4" type="video/mp4" />
+			</video>
 
-			<div className="relative z-10 text-white w-full sm:w-3/4 lg:w-1/2 flex flex-col gap-y-6 px-4 sm:px-6 lg:px-8 mt-28">
+			<div className="relative z-10 text-white w-full sm:w-3/4 lg:w-10/12 flex flex-col gap-y-6 px-4 sm:px-6 lg:px-8 mt-28">
 				<div className="motion-preset-compress flex flex-col">
 					<h1
 						className="text-4xl sm:text-5xl md:text-6xl font-bold text-center"
