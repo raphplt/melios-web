@@ -24,7 +24,7 @@ export default function Header() {
 	};
 
 	return (
-		<div className="fixed top-2 w-full z-50">
+		<div className="fixed top-2 w-[95%] mx-auto lg:w-full z-50 left-1/2 transform -translate-x-1/2">
 			<div className="flex items-center justify-between container mx-auto h-16 px-4 md:px-8 backdrop-blur-md bg-white/50 border-b border-white/20 shadow-lg rounded-full">
 				<button
 					className="flex items-center gap-x-4"
@@ -134,13 +134,9 @@ export default function Header() {
 					>
 						Contact
 					</Link>
-					<Link
-						href="/articles"
-						onPress={closeMenu}
-						className="text-gray-800 hover:text-primary transition-colors text-xl font-medium"
-					>
+					<Button as={Link} href="/articles" onPress={closeMenu}>
 						Articles
-					</Link>
+					</Button>
 					<div className="flex gap-4">
 						<Button
 							as={Link}

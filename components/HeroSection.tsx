@@ -19,29 +19,30 @@ export default function HeroSection() {
 				<source src="/images/bg-video.mp4" type="video/mp4" />
 			</video>
 
-			<div className="relative z-10 text-white w-full sm:w-3/4 lg:w-10/12 flex flex-col gap-y-6 px-4 sm:px-6 lg:px-8 mt-28">
+			<div className="relative z-10 text-white w-full sm:w-3/4 lg:w-10/12 flex flex-col gap-y-10 px-4 sm:px-6 lg:px-8 mt-28">
 				<div className="motion-preset-compress flex flex-col">
 					<h1
 						className="text-4xl sm:text-5xl md:text-6xl font-bold text-center"
 						aria-label="Commencez votre aventure avec Melios"
 					>
 						Commencez votre aventure avec
-						<span className="ml-2 text-4xl sm:text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-primary to-primaryLight">
+						<span className="ml-2 text-4xl sm:text-5xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-b from-primary to-primaryLight">
 							Melios
 						</span>
 					</h1>
 				</div>
 				<p
-					className="text-base sm:text-lg md:text-xl text-center mb-8 motion-preset-focus motion-delay-300 text-default-100 w-10/12 mx-auto"
+					className="text-base sm:text-lg md:text-lg text-center mb-6 motion-preset-focus motion-delay-300 text-default-200 w-11/12 mx-auto"
 					aria-label="La nouvelle façon de gérer votre quotidien avec simplicité et efficacité."
 				>
 					La nouvelle façon de gérer votre quotidien avec simplicité et efficacité.
 				</p>
-				<div className="flex flex-col sm:flex-row justify-center gap-6 mt-8">
+				<div className="flex flex-col sm:flex-row justify-center gap-3 lg:gap-6 ">
 					<Button
 						variant="solid"
 						color="primary"
 						endContent={<Arrow />}
+						size="lg"
 						as={Link}
 						href="#features"
 						className="motion-scale-in-[0.5] motion-translate-x-in-[-28%] motion-translate-y-in-[26%] 
@@ -55,8 +56,8 @@ export default function HeroSection() {
 					<Popover>
 						<PopoverTrigger>
 							<Button
-								color="primary"
-								variant="faded"
+								size="lg"
+								variant="solid"
 								endContent={<Download />}
 								className="motion-scale-in-[0.5] motion-translate-x-in-[-28%] motion-translate-y-in-[26%] 
                   motion-opacity-in-[0%] motion-rotate-in-[-10deg] motion-blur-in-[5px] 

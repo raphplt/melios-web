@@ -38,10 +38,9 @@ export function PostPreviewHomePage({
 				</div>
 
 				<div className="p-2">
-					<h3 className="text-md font-semibold text-gray-900 group-hover:underline line-clamp-2">
+					<h3 className="text-md font-semibold text-gray-900 group-hover:underline line-clamp-2 h-12 flex items-start">
 						{title}
 					</h3>
-
 					<div className="text-default-700 text-xs mt-1">
 						<DateFormatter dateString={date} />
 					</div>
