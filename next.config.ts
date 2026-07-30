@@ -4,7 +4,8 @@ const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig: NextConfig = {
 	output: "export",
-	basePath: isProd ? "/melios-web" : "",
+	trailingSlash: true,
+	basePath: process.env.NEXT_PUBLIC_BASE_PATH || (isProd ? "/melios-web" : ""),
 	images: {
 		unoptimized: true,
 		domains: ["dismivwflmiuojhwoxlw.supabase.co"],

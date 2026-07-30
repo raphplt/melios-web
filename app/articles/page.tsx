@@ -12,9 +12,11 @@ export default function Index() {
 	const [allPosts, setAllPosts] = useState<Post[]>([]);
 	const [hasMorePosts, setHasMorePosts] = useState(true);
 	const [loadedSlugs, setLoadedSlugs] = useState<Set<string>>(new Set());
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		const fetchPosts = async () => {
+			setIsLoading(true);
 			try {
 				const newPosts = ((await getAllPosts(page, 10)) as Post[]) || [];
 
@@ -34,6 +36,8 @@ export default function Index() {
 			} catch (error) {
 				console.error("Error fetching posts:", error);
 				setHasMorePosts(false);
+			} finally {
+				setIsLoading(false);
 			}
 		};
 
@@ -48,14 +52,19 @@ export default function Index() {
 		setPage((prevPage) => prevPage + 1);
 	};
 
-	if (!allPosts || allPosts.length === 0)
+	if (isLoading && allPosts.length === 0)
 		return (
 			<div className="flex justify-center items-center h-screen">
 				<Spinner />
 			</div>
 		);
-	if (!heroPost && morePosts.length === 0)
-		return <div className="container mx-auto px-5 mt-20">No posts found.</div>;
+	if (allPosts.length === 0)
+		return (
+			<div className="container mx-auto px-5 mt-28 min-h-[60vh] flex flex-col justify-center items-center text-center">
+				<h2 className="text-2xl font-bold text-gray-800 mb-2">Aucun article disponible</h2>
+				<p className="text-gray-600">Les articles du blog sont actuellement indisponibles.</p>
+			</div>
+		);
 
 	return (
 		<main>

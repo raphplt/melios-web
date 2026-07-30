@@ -1,4 +1,4 @@
-import { type Author } from "@/interfaces/author";
+import { parseAuthor } from "@/lib/parseAuthor";
 import Link from "next/link";
 import CoverImage from "./CoverImage";
 import DateFormatter from "./DateFormatter";
@@ -21,7 +21,7 @@ export function HeroPost({
 	author,
 	slug,
 }: Props) {
-	const authorParse: Author = JSON.parse(author);
+	const authorParse = parseAuthor(author);
 	return (
 		<section className="bg-default-50 rounded-md">
 			<div className="mb-8 md:mb-5">

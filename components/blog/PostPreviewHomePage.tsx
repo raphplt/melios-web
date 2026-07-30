@@ -1,4 +1,5 @@
-import { type Author } from "@/interfaces/author";
+import { parseAuthor } from "@/lib/parseAuthor";
+import { assetPath } from "@/lib/assetPath";
 import Link from "next/link";
 import DateFormatter from "./DateFormatter";
 import Avatar from "./Avatar";
@@ -22,7 +23,7 @@ export function PostPreviewHomePage({
 	author,
 	slug,
 }: Props) {
-	const authorParse: Author = JSON.parse(author);
+	const authorParse = parseAuthor(author);
 
 	return (
 		<Link href={`/articles/${slug}`}>
@@ -31,7 +32,7 @@ export function PostPreviewHomePage({
 					<Image
 						width={500}
 						height={500}
-						src={coverImage}
+						src={assetPath(coverImage)}
 						alt={`Image de couverture pour ${title}`}
 						className="w-full h-full object-cover"
 					/>

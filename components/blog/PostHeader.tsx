@@ -1,4 +1,4 @@
-import { type Author } from "@/interfaces/author";
+import { parseAuthor } from "@/lib/parseAuthor";
 import Avatar from "./Avatar";
 import CoverImage from "./CoverImage";
 import DateFormatter from "./DateFormatter";
@@ -20,7 +20,7 @@ export function PostHeader({
 	imageCredit,
 	readingTime,
 }: Props) {
-	const authorParsed = JSON.parse(author) as Author;
+	const authorParsed = parseAuthor(author);
 
 	return (
 		<>
