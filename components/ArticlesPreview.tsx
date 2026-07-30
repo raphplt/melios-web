@@ -5,6 +5,7 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { PostPreviewHomePage } from "./blog/PostPreviewHomePage";
 import { PostPreviewHomePageLoader } from "./blog/ArticlePreviewLoader";
 import { getAllPosts } from "@/lib/api";
+import { assetPath } from "@/lib/assetPath";
 
 const ArticlesPreview = () => {
 	const [recentPosts, setRecentPosts] = useState<Post[]>([]);
@@ -59,7 +60,7 @@ const ArticlesPreview = () => {
 				</div>
 				<div className="text-center">
 					<Link
-						href="/articles"
+						href={assetPath("/articles")}
 						passHref
 						className="font-semibold hover:text-primary transition-all duration-200"
 					>

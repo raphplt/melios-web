@@ -78,7 +78,7 @@ export default function Footer() {
 							</li>
 							<li>
 								<Link
-									href="/articles"
+									href={assetPath("/articles")}
 									onPress={() => handleLinkClick("/articles")}
 									className="text-default-100 text-sm cursor-pointer"
 								>
@@ -91,17 +91,17 @@ export default function Footer() {
 						<h3 className="text-xl font-bold mb-4">Légal</h3>
 						<ul className="space-y-2">
 							<li>
-								<Link href="/privacy" className="text-default-100 text-sm">
+								<Link href={assetPath("/privacy")} className="text-default-100 text-sm">
 									Confidentialité
 								</Link>
 							</li>
 							<li>
-								<Link href="/cookies" className="text-default-100 text-sm">
+								<Link href={assetPath("/cookies")} className="text-default-100 text-sm">
 									Cookies
 								</Link>
 							</li>
 							<li>
-								<Link href="/terms" className="text-default-100 text-sm">
+								<Link href={assetPath("/terms")} className="text-default-100 text-sm">
 									Mentions légales
 								</Link>
 							</li>

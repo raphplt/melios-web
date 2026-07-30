@@ -83,7 +83,7 @@ export async function generateMetadata(props: Params): Promise<Metadata> {
 
 export async function generateStaticParams() {
 	try {
-		const posts = await getAllPosts();
+		const posts = await getAllPosts(1, 100, true);
 		if (posts && posts.length > 0) {
 			return posts.map((post: { slug: string }) => ({
 				slug: post.slug,
@@ -92,5 +92,9 @@ export async function generateStaticParams() {
 	} catch (e) {
 		console.warn("generateStaticParams failed:", e);
 	}
-	return [{ slug: "placeholder" }];
+	return [
+		{ slug: "bienvenue-sur-melios" },
+		{ slug: "5-habitudes-sportives-legeres" },
+		{ slug: "organisation-et-focus" },
+	];
 }

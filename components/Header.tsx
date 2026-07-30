@@ -57,7 +57,7 @@ export default function Header() {
 					<Link href="#contact" className={textStyle}>
 						Contact
 					</Link>
-					<Link href="/articles" className={textStyle}>
+					<Link href={assetPath("/articles")} className={textStyle}>
 						Articles
 					</Link>
 					<div className="flex items-center gap-x-4">
@@ -136,7 +136,7 @@ export default function Header() {
 					>
 						Contact
 					</Link>
-					<Button as={Link} href="/articles" onPress={closeMenu}>
+					<Button as={Link} href={assetPath("/articles")} onPress={closeMenu}>
 						Articles
 					</Button>
 					<div className="flex gap-4">
