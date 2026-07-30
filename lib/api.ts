@@ -7,69 +7,88 @@ export async function getAllPosts(
 	limit: number = 10,
 	noLimit: boolean = false
 ) {
-	let query = supabase
-		.from("posts")
-		.select("*")
-		.order("date", { ascending: false });
+	try {
+		let query = supabase
+			.from("posts")
+			.select("*")
+			.order("date", { ascending: false });
 
-	if (!noLimit) {
-		const from = (page - 1) * limit;
-		const to = from + limit - 1;
-		query = query.range(from, to);
-	}
+		if (!noLimit) {
+			const from = (page - 1) * limit;
+			const to = from + limit - 1;
+			query = query.range(from, to);
+		}
 
-	const { data, error } = await query;
-	if (error) {
-		throw new Error(error.message);
+		const { data, error } = await query;
+		if (error || !data) {
+			console.warn("Supabase getAllPosts warning:", error?.message);
+			return [];
+		}
+		return data;
+	} catch (e) {
+		console.warn("getAllPosts error:", e);
+		return [];
 	}
-	return data;
 }
 
 // Récupère un post selon son slug
 export async function getPostBySlug(slug: string) {
-	const { data, error } = await supabase
-		.from("posts")
-		.select("*")
-		.eq("slug", slug)
-		.single();
+	try {
+		const { data, error } = await supabase
+			.from("posts")
+			.select("*")
+			.eq("slug", slug)
+			.single();
 
-	if (error) {
-		throw new Error(error.message);
+		if (error || !data) {
+			return null;
+		}
+		return data;
+	} catch (e) {
+		console.warn("getPostBySlug error:", e);
+		return null;
 	}
-	return data;
 }
 
 // Récupère les posts liés par des tags en commun (excluant le post courant)
 export async function getRelatedPosts(currentPost: any) {
-	// On récupère tous les posts sauf celui en cours
-	const { data: allPosts, error } = await supabase
-		.from("posts")
-		.select("*")
-		.neq("slug", currentPost.slug);
+	try {
+		const { data: allPosts, error } = await supabase
+			.from("posts")
+			.select("*")
+			.neq("slug", currentPost.slug);
 
-	if (error) {
-		throw new Error(error.message);
+		if (error || !allPosts) {
+			return [];
+		}
+		const relatedPosts = allPosts
+			.filter((post: any) => {
+				if (!post.tags || !currentPost.tags) return false;
+				return post.tags.some((tag: string) => currentPost.tags.includes(tag));
+			})
+			.slice(0, 3);
+		return relatedPosts;
+	} catch (e) {
+		console.warn("getRelatedPosts error:", e);
+		return [];
 	}
-	// Filtrage en mémoire selon l'intersection des tags
-	const relatedPosts = allPosts
-		.filter((post: any) => {
-			if (!post.tags || !currentPost.tags) return false;
-			return post.tags.some((tag: string) => currentPost.tags.includes(tag));
-		})
-		.slice(0, 3);
-	return relatedPosts;
 }
 
 // Récupère les posts épinglés
 export async function getPinnedPosts() {
-	const { data, error } = await supabase
-		.from("posts")
-		.select("*")
-		.eq("pinned", true)
-		.order("date", { ascending: false });
+	try {
+		const { data, error } = await supabase
+			.from("posts")
+			.select("*")
+			.eq("pinned", true)
+			.order("date", { ascending: false });
 
-	if (error) {
-		throw new Error(error.message);
+		if (error || !data) {
+			return [];
+		}
+		return data;
+	} catch (e) {
+		console.warn("getPinnedPosts error:", e);
+		return [];
 	}
-	return data;
 }

@@ -4,7 +4,8 @@ import { HeroPost } from "@/components/blog/HeroPost";
 import { MorePosts } from "@/components/blog/MorePosts";
 import { Post } from "@/interfaces/post";
 import { Button, Spinner } from "@heroui/react";
-import { PostPreviewCompact } from "@/components/blog/PostPreviewCompact"; // Assurez-vous que ce composant existe
+import { PostPreviewCompact } from "@/components/blog/PostPreviewCompact";
+import { getAllPosts } from "@/lib/api";
 
 export default function Index() {
 	const [page, setPage] = useState(1);
@@ -14,20 +15,24 @@ export default function Index() {
 
 	useEffect(() => {
 		const fetchPosts = async () => {
-			const res = await fetch(`/api/posts?page=${page}`);
-			const newPosts = await res.json();
+			try {
+				const newPosts = ((await getAllPosts(page, 10)) as Post[]) || [];
 
-			const uniquePosts = newPosts.filter(
-				(post: Post) => !loadedSlugs.has(post.slug)
-			);
-			setAllPosts((prevPosts) => [...prevPosts, ...uniquePosts]);
-			setLoadedSlugs((prevSlugs) => {
-				const newSlugs = new Set(prevSlugs);
-				uniquePosts.forEach((post: Post) => newSlugs.add(post.slug));
-				return newSlugs;
-			});
+				const uniquePosts = newPosts.filter(
+					(post: Post) => !loadedSlugs.has(post.slug)
+				);
+				setAllPosts((prevPosts) => [...prevPosts, ...uniquePosts]);
+				setLoadedSlugs((prevSlugs) => {
+					const newSlugs = new Set(prevSlugs);
+					uniquePosts.forEach((post: Post) => newSlugs.add(post.slug));
+					return newSlugs;
+				});
 
-			if (newPosts.length === 0 || newPosts.length < 10) {
+				if (newPosts.length === 0 || newPosts.length < 10) {
+					setHasMorePosts(false);
+				}
+			} catch (error) {
+				console.error("Error fetching posts:", error);
 				setHasMorePosts(false);
 			}
 		};

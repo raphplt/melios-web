@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { PostPreviewHomePage } from "./blog/PostPreviewHomePage";
 import { PostPreviewHomePageLoader } from "./blog/ArticlePreviewLoader";
+import { getAllPosts } from "@/lib/api";
 
 const ArticlesPreview = () => {
 	const [recentPosts, setRecentPosts] = useState<Post[]>([]);
@@ -13,9 +14,8 @@ const ArticlesPreview = () => {
 	useEffect(() => {
 		const fetchRecentPosts = async () => {
 			try {
-				const res = await fetch("/api/posts?page=1");
-				const posts = await res.json();
-				setRecentPosts(posts.slice(0, 3));
+				const posts = await getAllPosts(1, 3);
+				setRecentPosts((posts as Post[]) || []);
 			} catch (error) {
 				console.error("Error fetching recent posts:", error);
 			} finally {

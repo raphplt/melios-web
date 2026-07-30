@@ -24,7 +24,7 @@ export default function Header() {
 	};
 
 	return (
-		<div className="fixed top-2 w-[95%] mx-auto lg:w-full z-50 left-1/2 transform -translate-x-1/2">
+		<div className="fixed top-12 w-[95%] mx-auto lg:w-full z-40 left-1/2 transform -translate-x-1/2">
 			<div className="flex items-center justify-between container mx-auto h-16 px-4 md:px-8 backdrop-blur-md bg-white/50 border-b border-white/20 shadow-lg rounded-full">
 				<button
 					className="flex items-center gap-x-4"

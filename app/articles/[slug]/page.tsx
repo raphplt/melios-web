@@ -82,8 +82,15 @@ export async function generateMetadata(props: Params): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-	const posts = await getAllPosts();
-	return posts.map((post) => ({
-		slug: post.slug,
-	}));
+	try {
+		const posts = await getAllPosts();
+		if (posts && posts.length > 0) {
+			return posts.map((post: { slug: string }) => ({
+				slug: post.slug,
+			}));
+		}
+	} catch (e) {
+		console.warn("generateStaticParams failed:", e);
+	}
+	return [{ slug: "placeholder" }];
 }
