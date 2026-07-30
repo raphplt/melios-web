@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Sparkles, TrendingUp, Gift, Users } from "lucide-react";
+import { assetPath } from "@/lib/assetPath";
 
 const screenshots = [
 	{
@@ -107,7 +108,7 @@ export default function ScreenshotsSection() {
 								</div>
 								<div className="pt-8 my-3">
 									<Image
-										src={screen.image}
+										src={assetPath(screen.image)}
 										alt={screen.alt}
 										width={256}
 										height={512}

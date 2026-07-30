@@ -3,6 +3,7 @@ import { Link } from "@heroui/react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
+import { assetPath } from "@/lib/assetPath";
 
 export default function Footer() {
 	const pathname = usePathname();
@@ -25,7 +26,7 @@ export default function Footer() {
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 					<div>
 						<Image
-							src="/images/Logo_Melios.png"
+							src={assetPath("/images/Logo_Melios.png")}
 							alt="Melios"
 							width={40}
 							height={40}

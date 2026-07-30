@@ -2,6 +2,7 @@ import { Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import Image from "next/image";
+import { assetPath } from "@/lib/assetPath";
 
 export default function DownloadSection() {
 	return (
@@ -65,7 +66,7 @@ export default function DownloadSection() {
 			</div>
 			<div className="mt-12 flex flex-col lg:flex-row justify-center items-center gap-8 w-full max-w-7xl mx-auto">
 				<Image
-					src="/images/Preview.png"
+					src={assetPath("/images/Preview.png")}
 					alt="Aperçu de l'application Melios"
 					width={800}
 					height={500}

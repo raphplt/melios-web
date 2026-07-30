@@ -4,6 +4,7 @@ import { Button, Link } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { assetPath } from "@/lib/assetPath";
 
 export default function Header() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -32,10 +33,11 @@ export default function Header() {
 					aria-label="Accueil"
 				>
 					<Image
-						src="/images/Logo_Melios.png"
+						src={assetPath("/images/Logo_Melios.png")}
 						alt="Melios"
 						width={40}
 						height={40}
+						priority
 						className="w-8 h-8 rounded-lg"
 					/>
 					<p className="font-bold text-primary text-lg">Melios</p>

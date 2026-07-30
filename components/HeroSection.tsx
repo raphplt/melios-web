@@ -5,6 +5,7 @@ import Apple from "./icons/Apple";
 import Android from "./icons/Android";
 import Link from "next/link";
 import ArticlesPreview from "./ArticlesPreview";
+import { assetPath } from "@/lib/assetPath";
 
 export default function HeroSection() {
 	return (
@@ -14,9 +15,10 @@ export default function HeroSection() {
 				loop
 				muted
 				playsInline
+				preload="auto"
 				className="absolute inset-0 w-full h-full object-cover z-[-2] bg-gradient-to-t from-primary to-primaryLight"
 			>
-				<source src="/images/bg-video.mp4" type="video/mp4" />
+				<source src={assetPath("/images/bg-video.mp4")} type="video/mp4" />
 			</video>
 
 			<div className="relative z-10 text-white w-full sm:w-3/4 lg:w-10/12 flex flex-col gap-y-10 px-4 sm:px-6 lg:px-8 mt-28">

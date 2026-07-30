@@ -37,6 +37,8 @@ jobs:
         run: npm ci
 
       - name: Build with Next.js
+        env:
+          NEXT_PUBLIC_BASE_PATH: /melios-web
         run: npm run build
 
       - name: Add .nojekyll file
